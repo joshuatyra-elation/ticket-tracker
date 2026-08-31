@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josh Tyra — Account Open Tickets</title>
+<style>
+  :root {
+    --bg: #f4f5f8;
+    --surface: #ffffff;
+    --surface2: #eef0f5;
+    --border: rgba(0,0,0,0.08);
+    --text: #1a1d2e;
+    --muted: #7a82a0;
+    --tag-bg: rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter','Segoe UI',system-ui,sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; font-size: 13.5px; line-height: 1.55; }
+
+  /* HEADER */
+  .header { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; border-bottom:1px solid var(--border); background:#fff; position:sticky; top:0; z-index:100; box-shadow:0 1px 3px rgba(0,0,0,0.06); }
+  .header-left { display:flex; align-items:center; gap:12px; }
+  .header-icon { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:15px; background:var(--surface2); border:1px solid var(--border); flex-shrink:0; }
+  .header-title { font-size:14.5px; font-weight:700; color:var(--text); letter-spacing:-0.01em; }
+  .header-sub { font-size:11px; color:var(--muted); margin-top:1px; }
+  .header-right { display:flex; align-items:center; gap:12px; }
+  .selector-label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; }
+  .dropdown-wrap { position:relative; }
+  .dropdown-wrap::after { content:'▾'; position:absolute; right:10px; top:50%; transform:translateY(-50%); pointer-events:none; color:var(--muted); font-size:10px; }
+  select { appearance:none; background:var(--surface2); border:1px solid var(--border); color:var(--text); padding:7px 28px 7px 12px; border-radius:8px; font-size:12.5px; font-weight:500; cursor:pointer; outline:none; transition:border 0.15s; min-width:160px; }
+  select:hover { border-color:rgba(0,0,0,0.16); }
+
+  /* NAV TABS */
+  .nav { display:flex; gap:0; padding:0 32px; background:#fff; border-bottom:1px solid var(--border); }
+  .nav-tab { padding:12px 18px; font-size:12.5px; font-weight:500; color:var(--muted); cursor:pointer; border-bottom:2px solid transparent; transition:all 0.15s; user-select:none; white-space:nowrap; }
+  .nav-tab:hover { color:var(--text); }
+  .nav-tab.active { color:var(--text); border-bottom-color:#6255d4; }
+  .nav-tab .cnt { display:inline-block; background:var(--tag-bg); border-radius:10px; padding:1px 7px; font-size:10px; margin-left:5px; font-weight:700; color:var(--muted); }
+
+  /* CONTENT */
+  .content { padding:24px 32px 60px; max-width:1360px; margin:0 auto; }
+
+  /* PANEL */
+  .panel { display:none; }
+  .panel.active { display:block; }
+
+  /* ROLLUP STATS */
+  .rollup-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-bottom:24px; }
+  .stat-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .stat-card.accent-purple { border-left:3px solid #6255d4; }
+  .stat-card.accent-blue   { border-left:3px solid #1a7fe0; }
+  .stat-card.accent-teal   { border-left:3px solid #0faa84; }
+  .stat-card.accent-red    { border-left:3px solid #e8512a; }
+  .stat-card.accent-gray   { border-left:3px solid #9ba3bc; }
+  .stat-value { font-size:26px; font-weight:800; letter-spacing:-0.03em; line-height:1; margin-bottom:4px; }
+  .stat-label { font-size:11px; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:0.06em; }
+  .stat-sub   { font-size:11px; color:var(--muted); margin-top:5px; }
+
+  /* CLIENT SUMMARY CARDS */
+  .client-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+  .client-card { background:#fff; border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .client-card-name { font-size:12px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; gap:7px; }
+  .client-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .dot-allara { background:#6255d4; }
+  .dot-fsh    { background:#1a7fe0; }
+  .dot-form   { background:#0faa84; }
+  .dot-lifemd { background:#e8512a; }
+  .client-card-row { display:flex; justify-content:space-between; align-items:center; font-size:11.5px; padding:3px 0; border-bottom:1px solid var(--border); }
+  .client-card-row:last-child { border-bottom:none; }
+  .client-card-row .lbl { color:var(--muted); }
+  .client-card-row .val { font-weight:700; }
+
+  /* ALERTS */
+  .alert-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:22px; }
+  .alert { display:flex; gap:10px; padding:12px 14px; border-radius:10px; border:1px solid; }
+  .alert.red  { border-color:rgba(232,81,42,0.2); background:rgba(232,81,42,0.04); }
+  .alert.yellow { border-color:rgba(212,160,23,0.22); background:rgba(212,160,23,0.04); }
+  .alert-icon { font-size:13px; flex-shrink:0; margin-top:1px; }
+  .alert-title { font-size:11.5px; font-weight:700; margin-bottom:2px; }
+  .alert.red .alert-title { color:#b83010; }
+  .alert.yellow .alert-title { color:#8a6200; }
+  .alert-desc { font-size:11px; color:var(--muted); line-height:1.45; }
+
+  /* SECTION HEADER */
+  .section-header { display:flex; align-items:center; gap:10px; margin-bottom:10px; margin-top:24px; }
+  .section-title { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); }
+  .section-line { flex:1; height:1px; background:var(--border); }
+  .section-count { font-size:10.5px; color:var(--muted); background:var(--tag-bg); border-radius:8px; padding:2px 8px; font-weight:700; }
+
+  /* TOOLBAR */
+  .toolbar { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+  .filter-group { display:flex; align-items:center; gap:6px; }
+  .filter-label { font-size:11px; color:var(--muted); font-weight:600; white-space:nowrap; }
+  .filter-btn { padding:5px 12px; border-radius:6px; border:1px solid var(--border); background:#fff; font-size:11.5px; font-weight:500; color:var(--muted); cursor:pointer; transition:all 0.12s; white-space:nowrap; }
+  .filter-btn:hover { border-color:rgba(0,0,0,0.16); color:var(--text); }
+  .filter-btn.active { background:#6255d4; border-color:#6255d4; color:#fff; }
+  .toolbar-sep { width:1px; height:20px; background:var(--border); }
+  .sort-select { appearance:none; background:#fff; border:1px solid var(--border); color:var(--text); padding:5px 28px 5px 10px; border-radius:6px; font-size:11.5px; font-weight:500; cursor:pointer; outline:none; }
+  .sort-wrap { position:relative; }
+  .sort-wrap::after { content:'▾'; position:absolute; right:8px; top:50%; transform:translateY(-50%); pointer-events:none; color:var(--muted); font-size:10px; }
+  .spacer { flex:1; }
+  .search-box { padding:5px 12px; border-radius:6px; border:1px solid var(--border); background:#fff; font-size:11.5px; color:var(--text); outline:none; width:180px; }
+  .search-box::placeholder { color:var(--muted); }
+
+  /* TABLE */
+  .ticket-table { background:#fff; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+  .table-header { display:grid; grid-template-columns:var(--cols); padding:9px 14px; border-bottom:1px solid var(--border); background:rgba(0,0,0,0.02); font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.07em; gap:10px; align-items:center; user-select:none; }
+  .table-header span { cursor:pointer; display:flex; align-items:center; gap:3px; white-space:nowrap; }
+  .table-header span:hover { color:var(--text); }
+  .table-header span.sort-asc::after  { content:' ↑'; opacity:0.7; }
+  .table-header span.sort-desc::after { content:' ↓'; opacity:0.7; }
+  .table-row { display:grid; grid-template-columns:var(--cols); padding:10px 14px; border-bottom:1px solid var(--border); align-items:center; gap:10px; transition:background 0.1s; cursor:default; }
+  .table-row:last-child { border-bottom:none; }
+  .table-row:hover { background:rgba(0,0,0,0.018); }
+  .cell-id { font-family:'SF Mono','Fira Code',monospace; font-size:11px; color:var(--muted); }
+  .cell-id a { color:inherit; text-decoration:none; }
+  .cell-id a:hover { color:var(--text); text-decoration:underline; }
+  .cell-subject { font-size:12.5px; font-weight:500; color:var(--text); line-height:1.35; }
+  .cell-subject a { color:inherit; text-decoration:none; }
+  .cell-subject a:hover { text-decoration:underline; }
+  .cell-meta { font-size:11.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  /* CLIENT CHIP */
+  .chip { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:2px 7px; border-radius:20px; white-space:nowrap; }
+  .chip-allara { background:rgba(98,85,212,0.08); color:#5040bb; border:1px solid rgba(98,85,212,0.18); }
+  .chip-fsh    { background:rgba(26,127,224,0.08); color:#1460b0; border:1px solid rgba(26,127,224,0.18); }
+  .chip-form   { background:rgba(15,170,132,0.08); color:#097a5e; border:1px solid rgba(15,170,132,0.18); }
+  .chip-lifemd { background:rgba(232,81,42,0.08); color:#b83010; border:1px solid rgba(232,81,42,0.18); }
+
+  /* SOURCE CHIP */
+  .src { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:2px 7px; border-radius:6px; white-space:nowrap; }
+  .src-sf  { background:rgba(0,161,224,0.08); color:#0077a8; border:1px solid rgba(0,161,224,0.15); }
+  .src-lin { background:rgba(82,50,255,0.08); color:#4030bb; border:1px solid rgba(82,50,255,0.15); }
+
+  /* STATUS BADGE */
+  .badge { display:inline-flex; align-items:center; font-size:10px; font-weight:700; padding:2px 8px; border-radius:6px; white-space:nowrap; }
+  .b-open      { background:rgba(26,127,224,0.09); color:#1460b0; border:1px solid rgba(26,127,224,0.18); }
+  .b-pending   { background:rgba(212,160,23,0.1);  color:#8a6200; border:1px solid rgba(212,160,23,0.22); }
+  .b-new       { background:rgba(98,85,212,0.09); color:#5040bb; border:1px solid rgba(98,85,212,0.18); }
+  .b-resolved  { background:rgba(15,170,132,0.08); color:#097a5e; border:1px solid rgba(15,170,132,0.18); }
+  .b-progress  { background:rgba(26,127,224,0.08); color:#1460b0; border:1px solid rgba(26,127,224,0.15); }
+  .b-backlog   { background:rgba(0,0,0,0.04); color:var(--muted); border:1px solid var(--border); }
+  .b-done      { background:rgba(15,170,132,0.08); color:#097a5e; border:1px solid rgba(15,170,132,0.18); }
+  .b-todo      { background:rgba(0,0,0,0.05); color:#5a6080; border:1px solid rgba(0,0,0,0.08); }
+  .b-violation { background:rgba(232,81,42,0.09); color:#b83010; border:1px solid rgba(232,81,42,0.18); }
+
+  /* STALE */
+  .stale { display:inline-flex; align-items:center; gap:3px; font-size:9.5px; font-weight:700; color:#b83010; background:rgba(232,81,42,0.07); border:1px solid rgba(232,81,42,0.16); border-radius:5px; padding:1px 5px; margin-left:5px; vertical-align:middle; }
+
+  /* AGE */
+  .age { font-size:11.5px; font-weight:600; white-space:nowrap; }
+  .age-ok   { color:var(--muted); }
+  .age-warn { color:#8a6200; }
+  .age-hot  { color:#b83010; }
+
+  /* PRIORITY DOT */
+  .pdot { width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0; }
+  .pu { background:#e8512a; } .ph { background:#d4a017; } .pm { background:#1a7fe0; } .pl { background:#b0b8cc; } .pn { background:#d0d4e0; }
+
+  /* EMPTY */
+  .empty { padding:40px; text-align:center; color:var(--muted); font-size:12.5px; }
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .rollup-grid { grid-template-columns:repeat(3,1fr); }
+    .client-cards { grid-template-columns:repeat(2,1fr); }
+    .alert-row { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <div class="header-icon">🎫</div>
+    <div>
+      <div class="header-title">Josh Tyra — Account Open Tickets</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Aug 31, 2026</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="selector-label">View</span>
+    <div class="dropdown-wrap">
+      <select id="clientSelect" onchange="switchClient(this.value)">
+        <option value="all">All Clients</option>
+        <option value="allara">Allara</option>
+        <option value="fsh">First Stop Health</option>
+        <option value="form">Form Health</option>
+        <option value="lifemd">LifeMD</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav" id="navBar">
+  <div class="nav-tab active" onclick="switchNav('overview')" id="nav-overview">Overview</div>
+  <div class="nav-tab" onclick="switchNav('open')" id="nav-open">Open Tickets <span class="cnt" id="open-cnt">—</span></div>
+  <div class="nav-tab" onclick="switchNav('resolved')" id="nav-resolved">Resolved / Closed <span class="cnt" id="resolved-cnt">—</span></div>
+</div>
+
+<div class="content">
+
+<!-- ===================== OVERVIEW PANEL ===================== -->
+<div class="panel active" id="panel-overview">
+
+  <!-- TOP STATS -->
+  <div class="rollup-grid">
+    <div class="stat-card accent-gray">
+      <div class="stat-value" style="color:#1a1d2e">36</div>
+      <div class="stat-label">Open Tickets</div>
+      <div class="stat-sub">Across all 4 accounts</div>
+    </div>
+    <div class="stat-card accent-purple">
+      <div class="stat-value" style="color:#6255d4">20</div>
+      <div class="stat-label">Allara</div>
+      <div class="stat-sub">2 SF · 18 Linear</div>
+    </div>
+    <div class="stat-card accent-blue">
+      <div class="stat-value" style="color:#1a7fe0">5</div>
+      <div class="stat-label">First Stop Health</div>
+      <div class="stat-sub">1 SF · 4 Linear</div>
+    </div>
+    <div class="stat-card accent-teal">
+      <div class="stat-value" style="color:#0faa84">8</div>
+      <div class="stat-label">Form Health</div>
+      <div class="stat-sub">3 SF · 5 Linear</div>
+    </div>
+    <div class="stat-card accent-red">
+      <div class="stat-value" style="color:#e8512a">3</div>
+      <div class="stat-label">LifeMD</div>
+      <div class="stat-sub">3 SF · 0 Linear</div>
+    </div>
+  </div>
+
+  <!-- CLIENT CARDS -->
+  <div class="section-header"><span class="section-title">Client Snapshot</span><div class="section-line"></div></div>
+  <div class="client-cards">
+    <div class="client-card">
+      <div class="client-card-name"><span class="client-dot dot-allara"></span>Allara</div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">2</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">18</span></div>
+      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">19</span></div>
+      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">18</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">API/Webhook gaps</span></div>
+    </div>
+    <div class="client-card">
+      <div class="client-card-name"><span class="client-dot dot-fsh"></span>First Stop Health</div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">1</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">4</span></div>
+      <div class="client-card-row"><span class="lbl">Renewal ARR</span><span class="val" style="color:#097a5e">$215K</span></div>
+      <div class="client-card-row"><span class="lbl">Renewal Close</span><span class="val">Nov 17, 2026</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">API integrations</span></div>
+    </div>
+    <div class="client-card">
+      <div class="client-card-name"><span class="client-dot dot-form"></span>Form Health</div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">3</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">5</span></div>
+      <div class="client-card-row"><span class="lbl">Open Violations</span><span class="val" style="color:#b83010">0</span></div>
+      <div class="client-card-row"><span class="lbl">Pending Elation</span><span class="val" style="color:#8a6200">0</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">ICD-10 billing error</span></div>
+    </div>
+    <div class="client-card">
+      <div class="client-card-name"><span class="client-dot dot-lifemd"></span>LifeMD</div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">3</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">0</span></div>
+      <div class="client-card-row"><span class="lbl">eRx Blockers</span><span class="val" style="color:#b83010">2</span></div>
+      <div class="client-card-row"><span class="lbl">Platform Issues</span><span class="val" style="color:#b83010">1</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">Provider onboarding</span></div>
+    </div>
+  </div>
+
+</div><!-- /overview -->
+
+<!-- ===================== OPEN TICKETS PANEL ===================== -->
+<div class="panel" id="panel-open">
+
+  <div class="section-header" style="margin-top:0">
+    <span class="section-title">Open Tickets</span>
+    <div class="section-line"></div>
+    <span class="section-count" id="visible-count-open">— shown</span>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="filter-group">
+      <span class="filter-label">Client:</span>
+      <button class="filter-btn active" onclick="setFilter('open','client','all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('open','client','allara',this)"><span style="color:#6255d4">●</span> Allara</button>
+      <button class="filter-btn" onclick="setFilter('open','client','fsh',this)"><span style="color:#1a7fe0">●</span> FSH</button>
+      <button class="filter-btn" onclick="setFilter('open','client','form',this)"><span style="color:#0faa84">●</span> Form</button>
+      <button class="filter-btn" onclick="setFilter('open','client','lifemd',this)"><span style="color:#e8512a">●</span> LifeMD</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">Source:</span>
+      <button class="filter-btn active" onclick="setFilter('open','source','all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('open','source','sf',this)">Salesforce</button>
+      <button class="filter-btn" onclick="setFilter('open','source','linear',this)">Linear</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">Status:</span>
+      <button class="filter-btn active" onclick="setFilter('open','status','all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('open','status','open',this)">Open/New</button>
+      <button class="filter-btn" onclick="setFilter('open','status','pending',this)">Pending</button>
+      <button class="filter-btn" onclick="setFilter('open','status','in-progress',this)">In Progress</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="filter-group">
+      <span class="filter-label">Sort:</span>
+      <div class="sort-wrap">
+        <select class="sort-select" id="sortSelect-open" onchange="applySort('open',this.value)">
+          <option value="client">Client</option>
+          <option value="source">Source</option>
+          <option value="status">Status</option>
+          <option value="opened">Date Opened</option>
+          <option value="priority">Priority</option>
+          <option value="age">Age</option>
+        </select>
+      </div>
+    </div>
+    <input class="search-box" id="searchBox-open" placeholder="Search tickets…" oninput="renderTable('open')">
+  </div>
+
+  <!-- TABLE -->
+  <div class="ticket-table" style="--cols:90px 1fr 110px 100px 100px 130px 100px 56px">
+    <div class="table-header" style="--cols:90px 1fr 110px 100px 100px 130px 100px 56px">
+      <span onclick="toggleSort('open','id')">ID</span>
+      <span onclick="toggleSort('open','subject')">Subject / Title</span>
+      <span onclick="toggleSort('open','client')">Client</span>
+      <span onclick="toggleSort('open','source')">Source</span>
+      <span onclick="toggleSort('open','type')">Type</span>
+      <span onclick="toggleSort('open','owner')">Owner</span>
+      <span onclick="toggleSort('open','status')">Status</span>
+      <span onclick="toggleSort('open','age')">Age</span>
+    </div>
+    <div id="tableBody-open"></div>
+  </div>
+
+</div><!-- /open -->
+
+<!-- ===================== RESOLVED PANEL ===================== -->
+<div class="panel" id="panel-resolved">
+
+  <div class="section-header" style="margin-top:0">
+    <span class="section-title">Resolved / Closed Tickets</span>
+    <div class="section-line"></div>
+    <span class="section-count" id="visible-count-resolved">— shown</span>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="filter-group">
+      <span class="filter-label">Client:</span>
+      <button class="filter-btn active" onclick="setFilter('resolved','client','all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('resolved','client','allara',this)"><span style="color:#6255d4">●</span> Allara</button>
+      <button class="filter-btn" onclick="setFilter('resolved','client','fsh',this)"><span style="color:#1a7fe0">●</span> FSH</button>
+      <button class="filter-btn" onclick="setFilter('resolved','client','form',this)"><span style="color:#0faa84">●</span> Form</button>
+      <button class="filter-btn" onclick="setFilter('resolved','client','lifemd',this)"><span style="color:#e8512a">●</span> LifeMD</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">Source:</span>
+      <button class="filter-btn active" onclick="setFilter('resolved','source','all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('resolved','source','sf',this)">Salesforce</button>
+      <button class="filter-btn" onclick="setFilter('resolved','source','linear',this)">Linear</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <div class="filter-group">
+      <span class="filter-label">Status:</span>
+      <button class="filter-btn active" onclick="setFilter('resolved','status','all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('resolved','status','resolved',this)">Resolved</button>
+      <button class="filter-btn" onclick="setFilter('resolved','status','done',this)">Done</button>
+    </div>
+    <div class="spacer"></div>
+    <div class="filter-group">
+      <span class="filter-label">Sort:</span>
+      <div class="sort-wrap">
+        <select class="sort-select" id="sortSelect-resolved" onchange="applySort('resolved',this.value)">
+          <option value="client">Client</option>
+          <option value="source">Source</option>
+          <option value="status">Status</option>
+          <option value="opened">Date Opened</option>
+          <option value="priority">Priority</option>
+          <option value="age">Age</option>
+        </select>
+      </div>
+    </div>
+    <input class="search-box" id="searchBox-resolved" placeholder="Search tickets…" oninput="renderTable('resolved')">
+  </div>
+
+  <!-- TABLE -->
+  <div class="ticket-table" style="--cols:90px 1fr 110px 100px 100px 130px 100px 56px">
+    <div class="table-header" style="--cols:90px 1fr 110px 100px 100px 130px 100px 56px">
+      <span onclick="toggleSort('resolved','id')">ID</span>
+      <span onclick="toggleSort('resolved','subject')">Subject / Title</span>
+      <span onclick="toggleSort('resolved','client')">Client</span>
+      <span onclick="toggleSort('resolved','source')">Source</span>
+      <span onclick="toggleSort('resolved','type')">Type</span>
+      <span onclick="toggleSort('resolved','owner')">Owner</span>
+      <span onclick="toggleSort('resolved','status')">Status</span>
+      <span onclick="toggleSort('resolved','age')">Age</span>
+    </div>
+    <div id="tableBody-resolved"></div>
+  </div>
+
+</div><!-- /resolved -->
+
+</div><!-- /content -->
+
+<script>
+// ─── DATA ────────────────────────────────────────────────────────────────────
+const ALL_TICKETS = [
+  // ── ALLARA · SF ──────────────────────────────────────────────────
+  {id:'13755515', client:'allara', source:'sf', subject:'Enable API Access – Keragon/Jotform Integration', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:2, opened:'2026-07-14', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui0000174WxnIAE/view'},
+  {id:'13698822', client:'allara', source:'sf', subject:'Patient Data Export – CCD-A / PDF', type:'Data Export', owner:'Unassigned', status:'open', priority:2, opened:'2026-05-10', stale:true},
+  {id:'13757728', client:'allara', source:'sf', subject:'Keragon API Credentials – No Response', type:'API/Integration', owner:'Unassigned', status:'open', priority:2, opened:'2026-06-15', stale:true},
+  {id:'13756089', client:'allara', source:'sf', subject:'Production API Credentials Request', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:3, opened:'2026-07-15', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000017D2doIAC/view'},
+  {id:'13740863', client:'allara', source:'sf', subject:'Patient Passport – Form Link “Page Not Found”', type:'Passport', owner:'Ashley V.', status:'resolved', priority:3, opened:'2026-06-02'},
+  {id:'13713841', client:'allara', source:'sf', subject:'Note Assist Scribe – Start Recording Button Greyed Out', type:'Break-Fix', owner:'Ashley V.', status:'resolved', priority:2, opened:'2026-03-03'},
+  {id:'13711396', client:'allara', source:'sf', subject:'Inbox Task Completion – Completed Tasks Won’t Clear', type:'Break-Fix', owner:'Jui Desai', status:'resolved', priority:3, opened:'2026-02-23'},
+  {id:'13734821', client:'allara', source:'sf', subject:'Lab Code Restriction – Disable LabCorp 101300', type:'Feature Req.', owner:'Ricky Ahn', status:'resolved', priority:3, opened:'2026-05-13'},
+  {id:'13752978', client:'allara', source:'sf', subject:'Provider Elation ID Lookup – Integration (Jessica Nichols)', type:'API/Integration', owner:'Ricky Ahn', status:'resolved', priority:3, opened:'2026-07-07'},
+  {id:'13751627', client:'allara', source:'sf', subject:'Elation ID – Samantha Wannos ARNP Integration', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:3, opened:'2026-07-01'},
+  {id:'13764928', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Estella Martinez)', type:'Onboarding', owner:'Jahnea Hunter', status:'resolved', priority:3, opened:'2026-08-07'},
+  {id:'13760745', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Reychelle Morales)', type:'Onboarding', owner:'Yufang Lin', status:'resolved', priority:3, opened:'2026-07-28'},
+  {id:'13760651', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Doria Thomas)', type:'Onboarding', owner:'Yufang Lin', status:'resolved', priority:3, opened:'2026-07-28'},
+  {id:'13755476', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Ahlan Jama)', type:'Onboarding', owner:'Yufang Lin', status:'resolved', priority:3, opened:'2026-07-14'},
+  {id:'13764710', client:'allara', source:'sf', subject:'Seat Change Request – New Providers Jul 2026', type:'Seat Change', owner:'Jennifer Lay', status:'resolved', priority:3, opened:'2026-08-07'},
+  {id:'13701912', client:'allara', source:'sf', subject:'Provider Letters – Recurring “Save Number” Prompt', type:'Break-Fix', owner:'Lesli Balmir', status:'resolved', priority:3, opened:'2026-01-27'},
+  {id:'ENTFBK-100', client:'allara', source:'linear', subject:'PON (Provider Order Number) Not Exposed in Prescription Webhook', type:'API/Webhook', owner:'Unassigned', status:'todo', priority:2, opened:'2026-06-18', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-100'},
+  {id:'ENTFBK-97', client:'allara', source:'linear', subject:'API Webhook Gaps – Missing Order Fields', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-05-20', stale:true},
+  {id:'ENTFBK-89', client:'allara', source:'linear', subject:'Compound Rx / ePA Limitations in eRx Workflow', type:'Clinical', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-04-10', stale:true},
+  {id:'ENTFBK-91', client:'allara', source:'linear', subject:'Chart UI Customization – Header/Section Config', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-04-22', stale:true},
+  {id:'ENTFBK-93', client:'allara', source:'linear', subject:'Pharmacy Transmission 403 Errors – LabCorp eOrders', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-05-01', stale:true},
+  {id:'ENTFBK-88', client:'allara', source:'linear', subject:'Patient Data Export – CCD-A Format Support', type:'Data', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-04-05', stale:true},
+  {id:'ENTFBK-95', client:'allara', source:'linear', subject:'ePA Workflow – Missing Compound Rx Support', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-04-18', stale:true},
+  {id:'ENTFBK-101', client:'allara', source:'linear', subject:'API Rate Limiting – Sandbox vs Prod Discrepancy', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:4, opened:'2026-06-25', stale:true},
+  {id:'ENTFBK-102', client:'allara', source:'linear', subject:'Patient Portal Link Expiry – Inconsistent Behavior', type:'Passport', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-06-30', stale:true},
+  {id:'ENTFBK-85', client:'allara', source:'linear', subject:'Bulk CCD Export for Patient Transitions', type:'Data', owner:'Unassigned', status:'backlog', priority:4, opened:'2026-03-15', stale:true},
+  {id:'ENTFBK-86', client:'allara', source:'linear', subject:'Webhook Event for New Lab Results', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-03-20', stale:true},
+  {id:'ENTFBK-98', client:'allara', source:'linear', subject:'Appointment Webhook Missing Provider ID', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-06-28', stale:true},
+  {id:'ENTFBK-99', client:'allara', source:'linear', subject:'eRx Controlled Substance – State Cross-Reference Issue', type:'Clinical', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-07-02', stale:true},
+  {id:'ENTFBK-246', client:'allara', source:'linear', subject:'Provide API / DB Access to Export User Activity Log Data', type:'API/Data', owner:'Unassigned', status:'backlog', priority:0, opened:'2026-08-30', url:'https://linear.app/elationhealth/issue/ENTFBK-246'},
+  {id:'ENTFBK-125', client:'allara', source:'linear', subject:'CollaborateMD Integration Broken – Pending Bills, RTE, and Sync Failing', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-07-06', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-125'},
+  {id:'ENTFBK-104', client:'allara', source:'linear', subject:'Message Threads API – Patient Users and Attachments Not Supported', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:0, opened:'2026-06-24', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-104'},
+  {id:'LGLCMP-132', client:'allara', source:'linear', subject:'Invoice Reconciliation Guidance', type:'Legal/Compliance', owner:'Unassigned', status:'backlog', priority:4, opened:'2025-10-01', stale:true},
+  {id:'IDWL-605', client:'allara', source:'linear', subject:'Clinical Form Collection Logged as Report – No User Assigned', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-08-10', url:'https://linear.app/elationhealth/issue/IDWL-605', stale:true},
+  // ── FSH · SF ──────────────────────────────────────────────────
+  {id:'13765359', client:'fsh', source:'sf', subject:'Support Portal Login Issue – Jason Youn', type:'Portal Access', owner:'Lubna Ismail', status:'resolved', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AFj8DIAT/view'},
+  {id:'13769884', client:'fsh', source:'sf', subject:'Invoice #229491 – BILL.com Payment ($33,672)', type:'Finance/AR', owner:'Lily Bizuneh', status:'resolved', priority:3, opened:'2026-08-24', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BjnaRIAR/view'},
+  {id:'13766123', client:'fsh', source:'sf', subject:'Duplicate Diagnoses Auto-Appearing on Problem List', type:'Break-Fix', owner:'Lily Bizuneh', status:'open', priority:2, opened:'2026-08-12', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AU6piIAD/view'},
+  {id:'CE-555', client:'fsh', source:'linear', subject:'Scribe – Start Recording Button Greyed Out', type:'Clinical', owner:'Damon Porch', status:'done', priority:1, opened:'2026-03-03', url:'https://linear.app/elationhealth/issue/CE-555'},
+  {id:'CE-8', client:'fsh', source:'linear', subject:'Inbox Tasks – Completed Items Not Clearing', type:'Clinical', owner:'Assigned', status:'in-progress', priority:2, opened:'2026-01-15', stale:true},
+  {id:'SVC-217', client:'fsh', source:'linear', subject:'Review Trellis Health API Access for Patient Forms', type:'API/Integration', owner:'Mathew Kurian', status:'in-progress', priority:3, opened:'2026-07-15', url:'https://linear.app/elationhealth/issue/SVC-217', stale:true},
+  {id:'CE-1290', client:'fsh', source:'linear', subject:'60+ Duplicate Draft Notes Appearing for Multiple Providers', type:'Break-Fix', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-31', url:'https://linear.app/elationhealth/issue/CE-1290'},
+  {id:'CE-1292', client:'fsh', source:'linear', subject:'Elation Silently Crashes When Opening Specific Patient Chart', type:'Break-Fix', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-31', url:'https://linear.app/elationhealth/issue/CE-1292'},
+  // ── FORM · SF ──────────────────────────────────────────────────
+  {id:'13769520', client:'form', source:'sf', subject:'Billing Error – Cannot Save ICD-10 Codes', type:'Break-Fix', owner:'Onyeka Asumah', status:'pending', priority:2, opened:'2026-08-21', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BXok3IAD/view'},
+  {id:'13765268', client:'form', source:'sf', subject:'User Activity Log – Patient Form vs Clinical Form Record Types', type:'Break-Fix', owner:'Marvin Jimenez', status:'open', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AE478IAD/view', stale:true},
+  {id:'13753569', client:'form', source:'sf', subject:'Patient Intake Form – Bullet/Indentation Formatting', type:'Break-Fix', owner:'Karin Feng', status:'open', priority:3, opened:'2026-07-29', stale:true},
+  {id:'13711297', client:'form', source:'sf', subject:'Lab Orders Failing – LabCorp and Quest (Candid)', type:'Break-Fix', owner:'TEMP Backlog', status:'resolved', priority:2, opened:'2026-02-23', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00000sD10jIAC/view'},
+  {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-12', url:'https://linear.app/elationhealth/issue/DATA-1492'},
+  {id:'BST-2552', client:'form', source:'linear', subject:'Users Unable to Access Support Case Portal via SSO', type:'Portal', owner:'Assigned', status:'in-progress', priority:3, opened:'2026-07-30', url:'https://linear.app/elationhealth/issue/BST-2552', stale:true},
+  {id:'TE-180', client:'form', source:'linear', subject:'LabCorp Lab Orders Always Print/Transmit Primary Service Location as Order Location', type:'Break-Fix', owner:'Muqi Su', status:'in-progress', priority:2, opened:'2026-06-15', url:'https://linear.app/elationhealth/issue/TE-180'},
+  {id:'TE-225', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'in-progress', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/TE-225'},
+  {id:'TE-473', client:'form', source:'linear', subject:'Multi-State ePrescribing Transmits Wrong DEA Number', type:'Break-Fix', owner:'Darren Tan', status:'in-progress', priority:2, opened:'2026-07-20', url:'https://linear.app/elationhealth/issue/TE-473'},
+  // ── LIFEMD · SF ──────────────────────────────────────────────────
+  {id:'13770272', client:'lifemd', source:'sf', subject:'Elation Not Working – Connectivity / Loading Issues', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-25', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Boq1RIAR/view'},
+  {id:'13763571', client:'lifemd', source:'sf', subject:'Problems with New Hires – Provider eRx Not Working', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-04', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019TCRZIA4/view', stale:true},
+  {id:'13768814', client:'lifemd', source:'sf', subject:'EPCS IDP – IdenTrust Required – Alberto Perez Acosta', type:'Onboarding', owner:'Michaela Iglesias', status:'pending', priority:2, opened:'2026-08-19', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BJfqHIAT/view'},
+  {id:'13764602', client:'lifemd', source:'sf', subject:'Provider eRx and EPCS Not Active – Cecelia Facey FNP', type:'Onboarding', owner:'Cody Quaile', status:'resolved', priority:1, opened:'2026-08-07', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019qjGKIAY/view'},
+  {id:'13761382', client:'lifemd', source:'sf', subject:'Feature Request – Open Charts Counter in Practice Home', type:'Feature Req.', owner:'Ashley V.', status:'resolved', priority:4, opened:'2026-07-29'},
+  {id:'13742xxx', client:'lifemd', source:'sf', subject:'EPCS Access Controls – Tatiana Felix', type:'Onboarding', owner:'Avi Patel', status:'resolved', priority:3, opened:'2026-06-11'},
+  {id:'13690xxx', client:'lifemd', source:'sf', subject:'Unable to Download User Activity Reports – 4-Week Bug', type:'Break-Fix', owner:'Marvin Jimenez', status:'resolved', priority:2, opened:'2025-12-22'},
+  {id:'Surescripts', client:'lifemd', source:'linear', subject:'NPI Mismatch – David Culpepper James vs Milton (SPI 3073050662005)', type:'eRx/Integrations', owner:'Erin Hawley', status:'resolved', priority:2, opened:'2026-05-08'},
+];
+
+// ─── STATE ────────────────────────────────────────────────────────────────────
+const OPEN_STATUSES     = new Set(['open','new','pending','in-progress','backlog','todo']);
+const RESOLVED_STATUSES = new Set(['resolved','done']);
+
+const state = {
+  open:     { client:'all', source:'all', status:'all', sortKey:'client', sortDir:1 },
+  resolved: { client:'all', source:'all', status:'all', sortKey:'client', sortDir:1 },
+};
+let activeNav = 'overview';
+
+// ─── CLIENT SWITCH (dropdown) ────────────────────────────────────────────────
+function switchClient(val) {
+  state.open.client = val;
+  state.resolved.client = val;
+  const target = val !== 'all' ? 'open' : 'overview';
+  switchNav(target);
+  if(val !== 'all') {
+    ['open','resolved'].forEach(p => {
+      document.querySelectorAll(`#panel-${p} .filter-group`).forEach(fg => {
+        const lbl = fg.querySelector('.filter-label');
+        if(lbl && lbl.textContent==='Client:') {
+          fg.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('active');
+            const m = b.getAttribute('onclick').match(/'([^']+)'/g);
+            if(m && m[1] && m[1].replace(/'/g,'') === val) b.classList.add('active');
+          });
+        }
+      });
+    });
+  }
+  renderTable('open');
+  renderTable('resolved');
+}
+
+// ─── NAV TABS ─────────────────────────────────────────────────────────────────
+function switchNav(tab) {
+  activeNav = tab;
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('nav-' + tab).classList.add('active');
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + tab).classList.add('active');
+  if(tab === 'open')     renderTable('open');
+  if(tab === 'resolved') renderTable('resolved');
+}
+
+// ─── FILTERS ─────────────────────────────────────────────────────────────────
+function setFilter(panel, key, val, btn) {
+  state[panel][key] = val;
+  btn.closest('.filter-group').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if(key === 'client') {
+    document.getElementById('clientSelect').value = val;
+    // keep both panels in sync on client
+    state[panel === 'open' ? 'resolved' : 'open'].client = val;
+  }
+  renderTable(panel);
+}
+
+// ─── SORT ────────────────────────────────────────────────────────────────────
+function toggleSort(panel, key) {
+  const s = state[panel];
+  if(s.sortKey === key) s.sortDir *= -1;
+  else { s.sortKey = key; s.sortDir = 1; }
+  document.querySelectorAll(`#panel-${panel} .table-header span`).forEach(sp => sp.classList.remove('sort-asc','sort-desc'));
+  const cols = ['id','subject','client','source','type','owner','status','age'];
+  const idx = cols.indexOf(key);
+  if(idx >= 0) {
+    const spans = document.querySelectorAll(`#panel-${panel} .table-header span`);
+    if(spans[idx]) spans[idx].classList.add(s.sortDir === 1 ? 'sort-asc' : 'sort-desc');
+  }
+  renderTable(panel);
+}
+function applySort(panel, val) { state[panel].sortKey = val; state[panel].sortDir = 1; renderTable(panel); }
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+const clientNames = { allara:'Allara', fsh:'First Stop Health', form:'Form Health', lifemd:'LifeMD' };
+const priorityOrder = { 1:0, 2:1, 3:2, 4:3, 0:4 };
+
+function getStatusOrder(s) {
+  return {open:0,'new':1,pending:2,'in-progress':3,backlog:4,todo:5,done:6,resolved:7}[s] ?? 8;
+}
+
+function statusBadge(s) {
+  const map = {
+    open:'<span class="badge b-open">Open</span>',
+    new:'<span class="badge b-new">New</span>',
+    pending:'<span class="badge b-pending">Pending</span>',
+    'in-progress':'<span class="badge b-progress">In Progress</span>',
+    backlog:'<span class="badge b-backlog">Backlog</span>',
+    todo:'<span class="badge b-todo">To Do</span>',
+    done:'<span class="badge b-done">Done</span>',
+    resolved:'<span class="badge b-resolved">Resolved</span>',
+  };
+  return map[s] || `<span class="badge b-backlog">${s}</span>`;
+}
+
+function clientChip(c) { return `<span class="chip chip-${c}">${clientNames[c]}</span>`; }
+function srcChip(s) {
+  return s === 'sf'
+    ? '<span class="src src-sf">Salesforce</span>'
+    : '<span class="src src-lin">Linear</span>';
+}
+
+const TODAY = new Date('2026-08-31');
+function caseAge(opened) {
+  if(!opened) return 0;
+  return Math.round((TODAY - new Date(opened)) / 86400000);
+}
+function ageBadge(opened) {
+  const days = caseAge(opened);
+  const cls = days >= 60 ? 'age-hot' : days >= 30 ? 'age-warn' : 'age-ok';
+  return `<div class="age ${cls}">${days}d</div>`;
+}
+
+function renderTable(panel) {
+  const s = state[panel];
+  const isOpen = panel === 'open';
+  const baseStatuses = isOpen ? OPEN_STATUSES : RESOLVED_STATUSES;
+  const search = document.getElementById(`searchBox-${panel}`).value.toLowerCase();
+
+  let data = ALL_TICKETS.filter(t => {
+    // bucket filter
+    if(!baseStatuses.has(t.status)) return false;
+    if(s.client !== 'all' && t.client !== s.client) return false;
+    if(s.source !== 'all' && t.source !== s.source) return false;
+    // status sub-filter
+    if(s.status !== 'all') {
+      if(isOpen) {
+        if(s.status === 'open'        && t.status !== 'open' && t.status !== 'new') return false;
+        if(s.status === 'pending'     && t.status !== 'pending') return false;
+        if(s.status === 'in-progress' && t.status !== 'in-progress' && t.status !== 'backlog' && t.status !== 'todo') return false;
+      } else {
+        if(s.status === 'resolved' && t.status !== 'resolved') return false;
+        if(s.status === 'done'     && t.status !== 'done') return false;
+      }
+    }
+    if(search && !t.subject.toLowerCase().includes(search) && !t.id.toLowerCase().includes(search) && !clientNames[t.client].toLowerCase().includes(search) && !t.owner.toLowerCase().includes(search) && !t.type.toLowerCase().includes(search)) return false;
+    return true;
+  });
+
+  // sort
+  data.sort((a, b) => {
+    let va, vb;
+    if(s.sortKey === 'id')          { va = a.id; vb = b.id; }
+    else if(s.sortKey === 'subject'){ va = a.subject; vb = b.subject; }
+    else if(s.sortKey === 'client') { va = a.client; vb = b.client; }
+    else if(s.sortKey === 'source') { va = a.source; vb = b.source; }
+    else if(s.sortKey === 'type')   { va = a.type; vb = b.type; }
+    else if(s.sortKey === 'owner')  { va = a.owner; vb = b.owner; }
+    else if(s.sortKey === 'status') { va = getStatusOrder(a.status); vb = getStatusOrder(b.status); return (va - vb) * s.sortDir; }
+    else if(s.sortKey === 'opened') { va = a.opened; vb = b.opened; }
+    else if(s.sortKey === 'age')    { va = caseAge(a.opened); vb = caseAge(b.opened); return (va - vb) * s.sortDir; }
+    else if(s.sortKey === 'priority'){ va = priorityOrder[a.priority] ?? 4; vb = priorityOrder[b.priority] ?? 4; return (va - vb) * s.sortDir; }
+    else { va = a.client; vb = b.client; }
+    return String(va).localeCompare(String(vb)) * s.sortDir;
+  });
+
+  document.getElementById(`visible-count-${panel}`).textContent = data.length + ' shown';
+  document.getElementById(`${panel}-cnt`).textContent = data.length;
+
+  const body = document.getElementById(`tableBody-${panel}`);
+  if(data.length === 0) {
+    body.innerHTML = '<div class="empty">No tickets match the current filters.</div>';
+    return;
+  }
+
+  body.innerHTML = data.map(t => {
+    const idCell = t.url
+      ? `<div class="cell-id"><a href="${t.url}" target="_blank">${t.id}</a></div>`
+      : `<div class="cell-id">${t.id}</div>`;
+    const staleTag = t.stale ? '<span class="stale">⚠ Stale</span>' : '';
+    const subjectCell = t.url
+      ? `<div class="cell-subject"><a href="${t.url}" target="_blank">${t.subject}</a>${staleTag}</div>`
+      : `<div class="cell-subject">${t.subject}${staleTag}</div>`;
+    return `<div class="table-row" style="--cols:90px 1fr 110px 100px 100px 130px 100px 56px">
+      ${idCell}
+      ${subjectCell}
+      <div>${clientChip(t.client)}</div>
+      <div>${srcChip(t.source)}</div>
+      <div class="cell-meta">${t.type}</div>
+      <div class="cell-meta">${t.owner}</div>
+      <div>${statusBadge(t.status)}</div>
+      ${ageBadge(t.opened)}
+    </div>`;
+  }).join('');
+}
+
+// init – seed the tab counts without rendering invisible panels
+(function init() {
+  const openCount     = ALL_TICKETS.filter(t => OPEN_STATUSES.has(t.status)).length;
+  const resolvedCount = ALL_TICKETS.filter(t => RESOLVED_STATUSES.has(t.status)).length;
+  document.getElementById('open-cnt').textContent     = openCount;
+  document.getElementById('resolved-cnt').textContent = resolvedCount;
+  document.getElementById('visible-count-open').textContent     = openCount + ' shown';
+  document.getElementById('visible-count-resolved').textContent = resolvedCount + ' shown';
+})();
+</script>
+</body>
+</html>
