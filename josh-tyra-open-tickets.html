@@ -207,14 +207,14 @@
   <!-- TOP STATS -->
   <div class="rollup-grid">
     <div class="stat-card accent-gray">
-      <div class="stat-value" style="color:#1a1d2e">35</div>
+      <div class="stat-value" style="color:#1a1d2e">32</div>
       <div class="stat-label">Open Tickets</div>
       <div class="stat-sub">Across all 4 accounts</div>
     </div>
     <div class="stat-card accent-purple">
-      <div class="stat-value" style="color:#6255d4">20</div>
+      <div class="stat-value" style="color:#6255d4">18</div>
       <div class="stat-label">Allara</div>
-      <div class="stat-sub">2 SF · 18 Linear</div>
+      <div class="stat-sub">0 SF · 18 Linear</div>
     </div>
     <div class="stat-card accent-blue">
       <div class="stat-value" style="color:#1a7fe0">4</div>
@@ -222,9 +222,9 @@
       <div class="stat-sub">1 SF · 3 Linear</div>
     </div>
     <div class="stat-card accent-teal">
-      <div class="stat-value" style="color:#0faa84">8</div>
+      <div class="stat-value" style="color:#0faa84">7</div>
       <div class="stat-label">Form Health</div>
-      <div class="stat-sub">3 SF · 5 Linear</div>
+      <div class="stat-sub">2 SF · 5 Linear</div>
     </div>
     <div class="stat-card accent-red">
       <div class="stat-value" style="color:#e8512a">3</div>
@@ -238,9 +238,9 @@
   <div class="client-cards">
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-allara"></span>Allara</div>
-      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">2</span></div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">0</span></div>
       <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">18</span></div>
-      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">19</span></div>
+      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">17</span></div>
       <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">18</span></div>
       <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">API/Webhook gaps</span></div>
     </div>
@@ -254,7 +254,7 @@
     </div>
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-form"></span>Form Health</div>
-      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">3</span></div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">2</span></div>
       <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">5</span></div>
       <div class="client-card-row"><span class="lbl">Open Violations</span><span class="val" style="color:#b83010">0</span></div>
       <div class="client-card-row"><span class="lbl">Pending Elation</span><span class="val" style="color:#8a6200">0</span></div>
@@ -414,21 +414,7 @@
 const ALL_TICKETS = [
   // ── ALLARA · SF ──────────────────────────────────────────────────
   {id:'13755515', client:'allara', source:'sf', subject:'Enable API Access – Keragon/Jotform Integration', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:2, opened:'2026-07-14', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui0000174WxnIAE/view'},
-  {id:'13698822', client:'allara', source:'sf', subject:'Patient Data Export – CCD-A / PDF', type:'Data Export', owner:'Unassigned', status:'open', priority:2, opened:'2026-05-10', stale:true},
-  {id:'13757728', client:'allara', source:'sf', subject:'Keragon API Credentials – No Response', type:'API/Integration', owner:'Unassigned', status:'open', priority:2, opened:'2026-06-15', stale:true},
   {id:'13756089', client:'allara', source:'sf', subject:'Production API Credentials Request', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:3, opened:'2026-07-15', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000017D2doIAC/view'},
-  {id:'13740863', client:'allara', source:'sf', subject:'Patient Passport – Form Link “Page Not Found”', type:'Passport', owner:'Ashley V.', status:'resolved', priority:3, opened:'2026-06-02'},
-  {id:'13713841', client:'allara', source:'sf', subject:'Note Assist Scribe – Start Recording Button Greyed Out', type:'Break-Fix', owner:'Ashley V.', status:'resolved', priority:2, opened:'2026-03-03'},
-  {id:'13711396', client:'allara', source:'sf', subject:'Inbox Task Completion – Completed Tasks Won’t Clear', type:'Break-Fix', owner:'Jui Desai', status:'resolved', priority:3, opened:'2026-02-23'},
-  {id:'13734821', client:'allara', source:'sf', subject:'Lab Code Restriction – Disable LabCorp 101300', type:'Feature Req.', owner:'Ricky Ahn', status:'resolved', priority:3, opened:'2026-05-13'},
-  {id:'13752978', client:'allara', source:'sf', subject:'Provider Elation ID Lookup – Integration (Jessica Nichols)', type:'API/Integration', owner:'Ricky Ahn', status:'resolved', priority:3, opened:'2026-07-07'},
-  {id:'13751627', client:'allara', source:'sf', subject:'Elation ID – Samantha Wannos ARNP Integration', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:3, opened:'2026-07-01'},
-  {id:'13764928', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Estella Martinez)', type:'Onboarding', owner:'Jahnea Hunter', status:'resolved', priority:3, opened:'2026-08-07'},
-  {id:'13760745', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Reychelle Morales)', type:'Onboarding', owner:'Yufang Lin', status:'resolved', priority:3, opened:'2026-07-28'},
-  {id:'13760651', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Doria Thomas)', type:'Onboarding', owner:'Yufang Lin', status:'resolved', priority:3, opened:'2026-07-28'},
-  {id:'13755476', client:'allara', source:'sf', subject:'Provider Auth – Prescribing (Ahlan Jama)', type:'Onboarding', owner:'Yufang Lin', status:'resolved', priority:3, opened:'2026-07-14'},
-  {id:'13764710', client:'allara', source:'sf', subject:'Seat Change Request – New Providers Jul 2026', type:'Seat Change', owner:'Jennifer Lay', status:'resolved', priority:3, opened:'2026-08-07'},
-  {id:'13701912', client:'allara', source:'sf', subject:'Provider Letters – Recurring “Save Number” Prompt', type:'Break-Fix', owner:'Lesli Balmir', status:'resolved', priority:3, opened:'2026-01-27'},
   {id:'ENTFBK-100', client:'allara', source:'linear', subject:'PON (Provider Order Number) Not Exposed in Prescription Webhook', type:'API/Webhook', owner:'Unassigned', status:'todo', priority:2, opened:'2026-06-18', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-100'},
   {id:'ENTFBK-97', client:'allara', source:'linear', subject:'API Webhook Gaps – Missing Order Fields', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-05-20', stale:true},
   {id:'ENTFBK-89', client:'allara', source:'linear', subject:'Compound Rx / ePA Limitations in eRx Workflow', type:'Clinical', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-04-10', stale:true},
@@ -459,7 +445,6 @@ const ALL_TICKETS = [
   // ── FORM · SF ──────────────────────────────────────────────────
   {id:'13769520', client:'form', source:'sf', subject:'Billing Error – Cannot Save ICD-10 Codes', type:'Break-Fix', owner:'Onyeka Asumah', status:'pending', priority:2, opened:'2026-08-21', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BXok3IAD/view'},
   {id:'13765268', client:'form', source:'sf', subject:'User Activity Log – Patient Form vs Clinical Form Record Types', type:'Break-Fix', owner:'Marvin Jimenez', status:'open', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AE478IAD/view', stale:true},
-  {id:'13753569', client:'form', source:'sf', subject:'Patient Intake Form – Bullet/Indentation Formatting', type:'Break-Fix', owner:'Karin Feng', status:'open', priority:3, opened:'2026-07-29', stale:true},
   {id:'13711297', client:'form', source:'sf', subject:'Lab Orders Failing – LabCorp and Quest (Candid)', type:'Break-Fix', owner:'TEMP Backlog', status:'resolved', priority:2, opened:'2026-02-23', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00000sD10jIAC/view'},
   {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-12', url:'https://linear.app/elationhealth/issue/DATA-1492'},
   {id:'BST-2552', client:'form', source:'linear', subject:'Users Unable to Access Support Case Portal via SSO', type:'Portal', owner:'Andrew Talbot', status:'in-progress', priority:3, opened:'2026-07-30', url:'https://linear.app/elationhealth/issue/BST-2552'},
@@ -471,9 +456,6 @@ const ALL_TICKETS = [
   {id:'13763571', client:'lifemd', source:'sf', subject:'Problems with New Hires – Provider eRx Not Working', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-04', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019TCRZIA4/view', stale:true},
   {id:'13768814', client:'lifemd', source:'sf', subject:'EPCS IDP – IdenTrust Required – Alberto Perez Acosta', type:'Onboarding', owner:'Michaela Iglesias', status:'pending', priority:2, opened:'2026-08-19', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BJfqHIAT/view'},
   {id:'13764602', client:'lifemd', source:'sf', subject:'Provider eRx and EPCS Not Active – Cecelia Facey FNP', type:'Onboarding', owner:'Cody Quaile', status:'resolved', priority:1, opened:'2026-08-07', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019qjGKIAY/view'},
-  {id:'13761382', client:'lifemd', source:'sf', subject:'Feature Request – Open Charts Counter in Practice Home', type:'Feature Req.', owner:'Ashley V.', status:'resolved', priority:4, opened:'2026-07-29'},
-  {id:'13742xxx', client:'lifemd', source:'sf', subject:'EPCS Access Controls – Tatiana Felix', type:'Onboarding', owner:'Avi Patel', status:'resolved', priority:3, opened:'2026-06-11'},
-  {id:'13690xxx', client:'lifemd', source:'sf', subject:'Unable to Download User Activity Reports – 4-Week Bug', type:'Break-Fix', owner:'Marvin Jimenez', status:'resolved', priority:2, opened:'2025-12-22'},
   {id:'Surescripts', client:'lifemd', source:'linear', subject:'NPI Mismatch – David Culpepper James vs Milton (SPI 3073050662005)', type:'eRx/Integrations', owner:'Erin Hawley', status:'resolved', priority:2, opened:'2026-05-08'},
 ];
 
