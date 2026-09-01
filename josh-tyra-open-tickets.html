@@ -175,7 +175,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Aug 31, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 1, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -207,19 +207,19 @@
   <!-- TOP STATS -->
   <div class="rollup-grid">
     <div class="stat-card accent-gray">
-      <div class="stat-value" style="color:#1a1d2e">32</div>
+      <div class="stat-value" style="color:#1a1d2e">19</div>
       <div class="stat-label">Open Tickets</div>
       <div class="stat-sub">Across all 4 accounts</div>
     </div>
     <div class="stat-card accent-purple">
-      <div class="stat-value" style="color:#6255d4">18</div>
+      <div class="stat-value" style="color:#6255d4">6</div>
       <div class="stat-label">Allara</div>
-      <div class="stat-sub">0 SF · 18 Linear</div>
+      <div class="stat-sub">0 SF · 6 Linear</div>
     </div>
     <div class="stat-card accent-blue">
-      <div class="stat-value" style="color:#1a7fe0">4</div>
+      <div class="stat-value" style="color:#1a7fe0">3</div>
       <div class="stat-label">First Stop Health</div>
-      <div class="stat-sub">1 SF · 3 Linear</div>
+      <div class="stat-sub">0 SF · 3 Linear</div>
     </div>
     <div class="stat-card accent-teal">
       <div class="stat-value" style="color:#0faa84">7</div>
@@ -239,14 +239,14 @@
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-allara"></span>Allara</div>
       <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">0</span></div>
-      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">18</span></div>
-      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">17</span></div>
-      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">18</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">6</span></div>
+      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">4</span></div>
+      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">6</span></div>
       <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">API/Webhook gaps</span></div>
     </div>
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-fsh"></span>First Stop Health</div>
-      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">1</span></div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">0</span></div>
       <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">3</span></div>
       <div class="client-card-row"><span class="lbl">Renewal ARR</span><span class="val" style="color:#097a5e">$215K</span></div>
       <div class="client-card-row"><span class="lbl">Renewal Close</span><span class="val">Nov 17, 2026</span></div>
@@ -415,47 +415,38 @@ const ALL_TICKETS = [
   // ── ALLARA · SF ──────────────────────────────────────────────────
   {id:'13755515', client:'allara', source:'sf', subject:'Enable API Access – Keragon/Jotform Integration', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:2, opened:'2026-07-14', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui0000174WxnIAE/view'},
   {id:'13756089', client:'allara', source:'sf', subject:'Production API Credentials Request', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:3, opened:'2026-07-15', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000017D2doIAC/view'},
-  {id:'ENTFBK-100', client:'allara', source:'linear', subject:'PON (Provider Order Number) Not Exposed in Prescription Webhook', type:'API/Webhook', owner:'Unassigned', status:'todo', priority:2, opened:'2026-06-18', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-100'},
-  {id:'ENTFBK-97', client:'allara', source:'linear', subject:'API Webhook Gaps – Missing Order Fields', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-05-20', stale:true},
-  {id:'ENTFBK-89', client:'allara', source:'linear', subject:'Compound Rx / ePA Limitations in eRx Workflow', type:'Clinical', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-04-10', stale:true},
-  {id:'ENTFBK-91', client:'allara', source:'linear', subject:'Chart UI Customization – Header/Section Config', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-04-22', stale:true},
-  {id:'ENTFBK-93', client:'allara', source:'linear', subject:'Pharmacy Transmission 403 Errors – LabCorp eOrders', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-05-01', stale:true},
-  {id:'ENTFBK-88', client:'allara', source:'linear', subject:'Patient Data Export – CCD-A Format Support', type:'Data', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-04-05', stale:true},
-  {id:'ENTFBK-95', client:'allara', source:'linear', subject:'ePA Workflow – Missing Compound Rx Support', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-04-18', stale:true},
-  {id:'ENTFBK-101', client:'allara', source:'linear', subject:'API Rate Limiting – Sandbox vs Prod Discrepancy', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:4, opened:'2026-06-25', stale:true},
-  {id:'ENTFBK-102', client:'allara', source:'linear', subject:'Patient Portal Link Expiry – Inconsistent Behavior', type:'Passport', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-06-30', stale:true},
-  {id:'ENTFBK-85', client:'allara', source:'linear', subject:'Bulk CCD Export for Patient Transitions', type:'Data', owner:'Unassigned', status:'backlog', priority:4, opened:'2026-03-15', stale:true},
-  {id:'ENTFBK-86', client:'allara', source:'linear', subject:'Webhook Event for New Lab Results', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-03-20', stale:true},
-  {id:'ENTFBK-98', client:'allara', source:'linear', subject:'Appointment Webhook Missing Provider ID', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-06-28', stale:true},
-  {id:'ENTFBK-99', client:'allara', source:'linear', subject:'eRx Controlled Substance – State Cross-Reference Issue', type:'Clinical', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-07-02', stale:true},
-  {id:'ENTFBK-246', client:'allara', source:'linear', subject:'Provide API / DB Access to Export User Activity Log Data', type:'API/Data', owner:'Unassigned', status:'backlog', priority:0, opened:'2026-08-30', url:'https://linear.app/elationhealth/issue/ENTFBK-246'},
-  {id:'ENTFBK-125', client:'allara', source:'linear', subject:'CollaborateMD Integration Broken – Pending Bills, RTE, and Sync Failing', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:2, opened:'2026-07-06', url:'https://linear.app/elationhealth/issue/ENTFBK-125'},
-  {id:'ENTFBK-104', client:'allara', source:'linear', subject:'Message Threads API – Patient Users and Attachments Not Supported', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:0, opened:'2026-06-24', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-104'},
+  // ── ALLARA · Linear ──────────────────────────────────────────────
+  {id:'ENTFBK-100', client:'allara', source:'linear', subject:'PON (Provider Order Number) Not Exposed in Prescription Webhook Payload', type:'API/Webhook', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-06-18', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-100/pon-provider-order-number-not-exposed-in-elation-prescription-webhook'},
+  {id:'ENTFBK-104', client:'allara', source:'linear', subject:'Message Threads API Does Not Support Patient Users or Message Attachments', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-06-24', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-104/message-threads-api-does-not-support-patient-users-or-message'},
+  {id:'ENTFBK-125', client:'allara', source:'linear', subject:'CollaborateMD Integration Broken – Pending Bills, RTE, and Sync Failing', type:'API/Integration', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-07-06', url:'https://linear.app/elationhealth/issue/ENTFBK-125/collaboratemd-integration-broken-pending-bills-rte-and-sync-all'},
+  {id:'ENTFBK-246', client:'allara', source:'linear', subject:'Provide API / DB Access to Export User Activity Log Data', type:'API/Data', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-08-30', url:'https://linear.app/elationhealth/issue/ENTFBK-246/provide-api-or-database-access-to-export-user-activity-log-data'},
   {id:'LGLCMP-132', client:'allara', source:'linear', subject:'Invoice Reconciliation Guidance', type:'Legal/Compliance', owner:'Unassigned', status:'backlog', priority:4, opened:'2025-10-01', stale:true},
-  {id:'IDWL-605', client:'allara', source:'linear', subject:'Clinical Form Collection Logged as Report – No User Assigned', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-08-10', url:'https://linear.app/elationhealth/issue/IDWL-605', stale:true},
+  {id:'IDWL-605', client:'allara', source:'linear', subject:'Clinical Form Collection Logged as Report – No User Assigned', type:'Clinical', owner:'Unassigned', status:'backlog', priority:3, opened:'2026-08-10', stale:true, url:'https://linear.app/elationhealth/issue/IDWL-605/clinical-form-collection-logged-as-report-record-type-create-with-no'},
   // ── FSH · SF ──────────────────────────────────────────────────
   {id:'13765359', client:'fsh', source:'sf', subject:'Support Portal Login Issue – Jason Youn', type:'Portal Access', owner:'Lubna Ismail', status:'resolved', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AFj8DIAT/view'},
   {id:'13769884', client:'fsh', source:'sf', subject:'Invoice #229491 – BILL.com Payment ($33,672)', type:'Finance/AR', owner:'Lily Bizuneh', status:'resolved', priority:3, opened:'2026-08-24', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BjnaRIAR/view'},
-  {id:'13766123', client:'fsh', source:'sf', subject:'Duplicate Diagnoses Auto-Appearing on Problem List', type:'Break-Fix', owner:'Lily Bizuneh', status:'open', priority:2, opened:'2026-08-12', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AU6piIAD/view'},
+  // ── FSH · Linear ──────────────────────────────────────────────
   {id:'CE-555', client:'fsh', source:'linear', subject:'Scribe – Start Recording Button Greyed Out', type:'Clinical', owner:'Damon Porch', status:'done', priority:1, opened:'2026-03-03', url:'https://linear.app/elationhealth/issue/CE-555'},
   {id:'CE-8', client:'fsh', source:'linear', subject:'Inbox Tasks – Completed Items Not Clearing', type:'Clinical', owner:'Assigned', status:'done', priority:2, opened:'2026-01-15', url:'https://linear.app/elationhealth/issue/CE-8'},
-  {id:'SVC-217', client:'fsh', source:'linear', subject:'Review Trellis Health API Access for Patient Forms', type:'API/Integration', owner:'Mathew Kurian', status:'in-progress', priority:3, opened:'2026-07-15', url:'https://linear.app/elationhealth/issue/SVC-217', stale:true},
-  {id:'CE-1290', client:'fsh', source:'linear', subject:'60+ Duplicate Draft Notes Appearing for Multiple Providers', type:'Break-Fix', owner:'Unassigned', status:'todo', priority:2, opened:'2026-08-31', url:'https://linear.app/elationhealth/issue/CE-1290'},
-  {id:'CE-1292', client:'fsh', source:'linear', subject:'Elation Silently Crashes When Opening Specific Patient Chart', type:'Break-Fix', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-31', url:'https://linear.app/elationhealth/issue/CE-1292'},
+  {id:'SVC-217', client:'fsh', source:'linear', subject:'Review Trellis Health API Access for Patient Forms', type:'API/Integration', owner:'Mathew Kurian', status:'in-progress', priority:3, opened:'2026-07-15', stale:true, url:'https://linear.app/elationhealth/issue/SVC-217/review-trellis-health-api-access-for-custom-patient-forms'},
+  {id:'CE-1290', client:'fsh', source:'linear', subject:'60+ Duplicate Draft Notes Appearing for Multiple Providers', type:'Break-Fix', owner:'Sabrina Zhu', status:'todo', priority:2, opened:'2026-08-31', url:'https://linear.app/elationhealth/issue/CE-1290/60-duplicate-draft-notes-appearing-for-multiple-providers-at-pace-of'},
+  {id:'CE-1292', client:'fsh', source:'linear', subject:'Elation Silently Crashes When Opening Specific Patient Chart', type:'Break-Fix', owner:'Sabrina Zhu', status:'todo', priority:1, opened:'2026-08-31', url:'https://linear.app/elationhealth/issue/CE-1292/elation-silently-crashes-when-opening-specific-patient-chart'},
   // ── FORM · SF ──────────────────────────────────────────────────
   {id:'13769520', client:'form', source:'sf', subject:'Billing Error – Cannot Save ICD-10 Codes', type:'Break-Fix', owner:'Onyeka Asumah', status:'pending', priority:2, opened:'2026-08-21', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BXok3IAD/view'},
-  {id:'13765268', client:'form', source:'sf', subject:'User Activity Log – Patient Form vs Clinical Form Record Types', type:'Break-Fix', owner:'Marvin Jimenez', status:'open', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AE478IAD/view', stale:true},
+  {id:'13766123', client:'form', source:'sf', subject:'Duplicate Diagnoses Auto-Appearing on Problem List', type:'Break-Fix', owner:'Michaela Iglesias', status:'open', priority:2, opened:'2026-08-12', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AU6piIAD/view'},
   {id:'13711297', client:'form', source:'sf', subject:'Lab Orders Failing – LabCorp and Quest (Candid)', type:'Break-Fix', owner:'TEMP Backlog', status:'resolved', priority:2, opened:'2026-02-23', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00000sD10jIAC/view'},
-  {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-12', url:'https://linear.app/elationhealth/issue/DATA-1492'},
-  {id:'BST-2552', client:'form', source:'linear', subject:'Users Unable to Access Support Case Portal via SSO', type:'Portal', owner:'Andrew Talbot', status:'in-progress', priority:3, opened:'2026-07-30', url:'https://linear.app/elationhealth/issue/BST-2552'},
-  {id:'TE-180', client:'form', source:'linear', subject:'LabCorp Lab Orders Always Print/Transmit Primary Service Location as Order Location', type:'Break-Fix', owner:'Muqi Su', status:'in-progress', priority:2, opened:'2026-06-15', url:'https://linear.app/elationhealth/issue/TE-180'},
-  {id:'TE-225', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'todo', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/TE-225'},
-  {id:'TE-473', client:'form', source:'linear', subject:'Multi-State ePrescribing Transmits Wrong DEA Number', type:'Break-Fix', owner:'Darren Tan', status:'in-progress', priority:2, opened:'2026-07-20', url:'https://linear.app/elationhealth/issue/TE-473'},
+  // ── FORM · Linear ──────────────────────────────────────────────
+  {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'todo', priority:1, opened:'2026-08-12', url:'https://linear.app/elationhealth/issue/DATA-1492/metriport-api-integration-bulk-creating-duplicate-problem-list-entries'},
+  {id:'BST-2552', client:'form', source:'linear', subject:'Users Unable to Access Support Case Portal via SSO', type:'Portal', owner:'Andrew Talbot', status:'in-progress', priority:3, opened:'2026-07-30', url:'https://linear.app/elationhealth/issue/BST-2552/users-unable-to-access-support-case-portal-via-sso-error'},
+  {id:'TE-180', client:'form', source:'linear', subject:'LabCorp Lab Orders Always Print/Transmit Primary Service Location as Originating Site', type:'Break-Fix', owner:'Muqi Su', status:'in-progress', priority:2, opened:'2026-06-15', url:'https://linear.app/elationhealth/issue/TE-180/labcorp-lab-orders-always-printtransmit-primary-service-location-as'},
+  {id:'TE-225', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'todo', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/TE-225/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
+  {id:'TE-473', client:'form', source:'linear', subject:'Multi-State ePrescribing Transmits Wrong DEA Number', type:'Break-Fix', owner:'Darren Tan', status:'in-progress', priority:2, opened:'2026-07-20', url:'https://linear.app/elationhealth/issue/TE-473/multi-state-eprescribing-transmits-wrong-dea-number'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
   {id:'13770272', client:'lifemd', source:'sf', subject:'Elation Not Working – Connectivity / Loading Issues', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-25', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Boq1RIAR/view'},
-  {id:'13763571', client:'lifemd', source:'sf', subject:'Problems with New Hires – Provider eRx Not Working', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-04', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019TCRZIA4/view', stale:true},
+  {id:'13763571', client:'lifemd', source:'sf', subject:'Problems with New Hires – Provider eRx Not Working', type:'Break-Fix', owner:'Lubna Ismail', status:'pending', priority:1, opened:'2026-08-04', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019TCRZIA4/view'},
   {id:'13768814', client:'lifemd', source:'sf', subject:'EPCS IDP – IdenTrust Required – Alberto Perez Acosta', type:'Onboarding', owner:'Michaela Iglesias', status:'pending', priority:2, opened:'2026-08-19', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BJfqHIAT/view'},
   {id:'13764602', client:'lifemd', source:'sf', subject:'Provider eRx and EPCS Not Active – Cecelia Facey FNP', type:'Onboarding', owner:'Cody Quaile', status:'resolved', priority:1, opened:'2026-08-07', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019qjGKIAY/view'},
+  // ── LIFEMD · Linear ──────────────────────────────────────────────
   {id:'Surescripts', client:'lifemd', source:'linear', subject:'NPI Mismatch – David Culpepper James vs Milton (SPI 3073050662005)', type:'eRx/Integrations', owner:'Erin Hawley', status:'resolved', priority:2, opened:'2026-05-08'},
 ];
 
@@ -562,7 +553,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-08-31');
+const TODAY = new Date('2026-09-01');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
