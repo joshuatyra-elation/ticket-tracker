@@ -142,6 +142,7 @@
   .b-backlog   { background:rgba(0,0,0,0.04); color:var(--muted); border:1px solid var(--border); }
   .b-done      { background:rgba(15,170,132,0.08); color:#097a5e; border:1px solid rgba(15,170,132,0.18); }
   .b-todo      { background:rgba(0,0,0,0.05); color:#5a6080; border:1px solid rgba(0,0,0,0.08); }
+  .b-blocked   { background:rgba(212,160,23,0.1);  color:#7a5000; border:1px solid rgba(212,160,23,0.22); }
   .b-violation { background:rgba(232,81,42,0.09); color:#b83010; border:1px solid rgba(232,81,42,0.18); }
 
   /* STALE */
@@ -175,7 +176,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 3, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 4, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -431,9 +432,9 @@ const ALL_TICKETS = [
   {id:'13771643', client:'form', source:'sf', subject:'Custom Data Export – Fax Inbox Filing Activity by User and Day', type:'Reporting/Data', owner:'Lubna Ismail', status:'open', priority:3, opened:'2026-08-28', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001CGUE5IAP/view'},
   {id:'13711297', client:'form', source:'sf', subject:'Lab Orders Failing – LabCorp and Quest (Candid)', type:'Break-Fix', owner:'TEMP Backlog', status:'resolved', priority:2, opened:'2026-02-23', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00000sD10jIAC/view'},
   // ── FORM · Linear ──────────────────────────────────────────────
-  {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'in-progress', priority:1, opened:'2026-08-21', url:'https://linear.app/elationhealth/issue/DATA-1492/metriport-api-integration-bulk-creating-duplicate-problem-list-entries'},
+  {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'blocked', priority:1, opened:'2026-08-21', url:'https://linear.app/elationhealth/issue/DATA-1492/metriport-api-integration-bulk-creating-duplicate-problem-list-entries'},
   {id:'BST-2552', client:'form', source:'linear', subject:'Users Unable to Access Support Case Portal via SSO', type:'Portal', owner:'Andrew Talbot', status:'done', priority:3, opened:'2026-07-30', url:'https://linear.app/elationhealth/issue/BST-2552/users-unable-to-access-support-case-portal-via-sso-error'},
-  {id:'TE-225', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'in-progress', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/TE-225/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
+  {id:'TE-225', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'blocked', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/TE-225/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
   {id:'TE-473', client:'form', source:'linear', subject:'Multi-State ePrescribing Transmits Wrong DEA Number', type:'Break-Fix', owner:'Darren Tan', status:'done', priority:2, opened:'2026-07-20', url:'https://linear.app/elationhealth/issue/TE-473/multi-state-eprescribing-transmits-wrong-dea-number'},
   {id:'EHRFBK-966', client:'form', source:'linear', subject:'Bulk Export/Report of Fax Inbox Filing Activity by User and Day', type:'Reporting/Data', owner:'Unassigned', status:'open', priority:0, opened:'2026-08-29', url:'https://linear.app/elationhealth/issue/EHRFBK-966/bulk-exportreport-of-fax-inbox-filing-activity-by-user-and-day'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
@@ -443,11 +444,10 @@ const ALL_TICKETS = [
   {id:'13764602', client:'lifemd', source:'sf', subject:'Provider eRx and EPCS Not Active – Cecelia Facey FNP', type:'Onboarding', owner:'Cody Quaile', status:'resolved', priority:1, opened:'2026-08-07', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019qjGKIAY/view'},
   // ── LIFEMD · Linear ──────────────────────────────────────────────
   {id:'FOPE-686', client:'lifemd', source:'linear', subject:'Insurance API Deprecation Extension – LifeMD Go-Live Pending (Practice 337577483108356)', type:'API/Integration', owner:'Eric Credeur', status:'todo', priority:3, opened:'2026-03-25', stale:true, url:'https://linear.app/elationhealth/issue/FOPE-686/practices-with-approved-extension-for-insurance-api'},
-  {id:'Surescripts', client:'lifemd', source:'linear', subject:'NPI Mismatch – David Culpepper James vs Milton (SPI 3073050662005)', type:'eRx/Integrations', owner:'Erin Hawley', status:'resolved', priority:2, opened:'2026-05-08'},
 ];
 
 // ─── STATE ────────────────────────────────────────────────────────────────────
-const OPEN_STATUSES     = new Set(['open','new','pending','in-progress','backlog','todo']);
+const OPEN_STATUSES     = new Set(['open','new','pending','in-progress','backlog','todo','blocked']);
 const RESOLVED_STATUSES = new Set(['resolved','done']);
 
 const state = {
@@ -525,7 +525,7 @@ const clientNames = { allara:'Allara', fsh:'First Stop Health', form:'Form Healt
 const priorityOrder = { 1:0, 2:1, 3:2, 4:3, 0:4 };
 
 function getStatusOrder(s) {
-  return {open:0,'new':1,pending:2,'in-progress':3,backlog:4,todo:5,done:6,resolved:7}[s] ?? 8;
+  return {open:0,'new':1,pending:2,'in-progress':3,blocked:4,backlog:5,todo:6,done:7,resolved:8}[s] ?? 9;
 }
 
 function statusBadge(s) {
@@ -536,6 +536,7 @@ function statusBadge(s) {
     'in-progress':'<span class="badge b-progress">In Progress</span>',
     backlog:'<span class="badge b-backlog">Backlog</span>',
     todo:'<span class="badge b-todo">To Do</span>',
+    blocked:'<span class="badge b-blocked">Blocked</span>',
     done:'<span class="badge b-done">Done</span>',
     resolved:'<span class="badge b-resolved">Resolved</span>',
   };
@@ -549,7 +550,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-09-03');
+const TODAY = new Date('2026-09-04');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
