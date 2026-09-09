@@ -176,7 +176,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 4, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 9, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -208,14 +208,14 @@
   <!-- TOP STATS -->
   <div class="rollup-grid">
     <div class="stat-card accent-gray">
-      <div class="stat-value" style="color:#1a1d2e">12</div>
+      <div class="stat-value" style="color:#1a1d2e">11</div>
       <div class="stat-label">Open Tickets</div>
       <div class="stat-sub">Across all 4 accounts</div>
     </div>
     <div class="stat-card accent-purple">
-      <div class="stat-value" style="color:#6255d4">2</div>
+      <div class="stat-value" style="color:#6255d4">1</div>
       <div class="stat-label">Allara</div>
-      <div class="stat-sub">0 SF · 2 Linear</div>
+      <div class="stat-sub">0 SF · 1 Linear</div>
     </div>
     <div class="stat-card accent-blue">
       <div class="stat-value" style="color:#1a7fe0">0</div>
@@ -240,9 +240,9 @@
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-allara"></span>Allara</div>
       <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">0</span></div>
-      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">2</span></div>
-      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">2</span></div>
-      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">2</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">1</span></div>
+      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">1</span></div>
+      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">1</span></div>
       <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">API/Webhook gaps</span></div>
     </div>
     <div class="client-card">
@@ -418,7 +418,7 @@ const ALL_TICKETS = [
   {id:'13756089', client:'allara', source:'sf', subject:'Production API Credentials Request', type:'API/Integration', owner:'Cody Quaile', status:'resolved', priority:3, opened:'2026-07-15', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000017D2doIAC/view'},
   // ── ALLARA · Linear ──────────────────────────────────────────────
   {id:'ENTFBK-100', client:'allara', source:'linear', subject:'PON (Provider Order Number) Not Exposed in Prescription Webhook Payload', type:'API/Webhook', owner:'Unassigned', status:'open', priority:0, opened:'2026-06-18', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-100/pon-provider-order-number-not-exposed-in-elation-prescription-webhook'},
-  {id:'LGLCMP-132', client:'allara', source:'linear', subject:'Invoice Reconciliation Guidance', type:'Legal/Compliance', owner:'Unassigned', status:'backlog', priority:0, opened:'2026-08-07', stale:true, url:'https://linear.app/elationhealth/issue/LGLCMP-132/legal-to-provide-guidance-allara-invoice-reconciliation'},
+  {id:'LGLCMP-132', client:'allara', source:'linear', subject:'Invoice Reconciliation Guidance', type:'Legal/Compliance', owner:'Unassigned', status:'done', priority:0, opened:'2026-08-07', url:'https://linear.app/elationhealth/issue/LGLCMP-132/legal-to-provide-guidance-allara-invoice-reconciliation'},
   // ── FSH · SF ──────────────────────────────────────────────────
   {id:'13765359', client:'fsh', source:'sf', subject:'Support Portal Login Issue – Jason Youn', type:'Portal Access', owner:'Lubna Ismail', status:'resolved', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AFj8DIAT/view'},
   {id:'13769884', client:'fsh', source:'sf', subject:'Invoice #229491 – BILL.com Payment ($33,672)', type:'Finance/AR', owner:'Lily Bizuneh', status:'resolved', priority:3, opened:'2026-08-24', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BjnaRIAR/view'},
@@ -426,7 +426,7 @@ const ALL_TICKETS = [
   {id:'CE-555', client:'fsh', source:'linear', subject:'Scribe – Start Recording Button Greyed Out', type:'Clinical', owner:'Damon Porch', status:'done', priority:1, opened:'2026-03-03', url:'https://linear.app/elationhealth/issue/CE-555'},
   {id:'CE-8', client:'fsh', source:'linear', subject:'Inbox Tasks – Completed Items Not Clearing', type:'Clinical', owner:'Shirley Yang', status:'done', priority:2, opened:'2026-01-15', url:'https://linear.app/elationhealth/issue/CE-8'},
   // ── FORM · SF ──────────────────────────────────────────────────
-  {id:'13769520', client:'form', source:'sf', subject:'Billing Error – Cannot Save ICD-10 Codes', type:'Break-Fix', owner:'Onyeka Asumah', status:'pending', priority:2, opened:'2026-08-21', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BXok3IAD/view'},
+  {id:'13769520', client:'form', source:'sf', subject:'Billing Error – Cannot Save ICD-10 Codes', type:'Break-Fix', owner:'Onyeka Asumah', status:'pending', priority:2, opened:'2026-08-21', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BXok3IAD/view'},
   {id:'13766123', client:'form', source:'sf', subject:'Duplicate Diagnoses Auto-Appearing on Problem List', type:'Break-Fix', owner:'Michaela Iglesias', status:'open', priority:2, opened:'2026-08-12', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AU6piIAD/view'},
   {id:'13768679', client:'form', source:'sf', subject:'ICD-10 Codes Duplicating in Visit Note via AI Assist', type:'Break-Fix', owner:'Michaela Iglesias', status:'open', priority:2, opened:'2026-08-19', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BHy0vIAD/view'},
   {id:'13771643', client:'form', source:'sf', subject:'Custom Data Export – Fax Inbox Filing Activity by User and Day', type:'Reporting/Data', owner:'Lubna Ismail', status:'open', priority:3, opened:'2026-08-28', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001CGUE5IAP/view'},
@@ -438,7 +438,7 @@ const ALL_TICKETS = [
   {id:'TE-473', client:'form', source:'linear', subject:'Multi-State ePrescribing Transmits Wrong DEA Number', type:'Break-Fix', owner:'Darren Tan', status:'done', priority:2, opened:'2026-07-20', url:'https://linear.app/elationhealth/issue/TE-473/multi-state-eprescribing-transmits-wrong-dea-number'},
   {id:'EHRFBK-966', client:'form', source:'linear', subject:'Bulk Export/Report of Fax Inbox Filing Activity by User and Day', type:'Reporting/Data', owner:'Unassigned', status:'open', priority:0, opened:'2026-08-29', url:'https://linear.app/elationhealth/issue/EHRFBK-966/bulk-exportreport-of-fax-inbox-filing-activity-by-user-and-day'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
-  {id:'13770272', client:'lifemd', source:'sf', subject:'Elation Not Working – Connectivity / Loading Issues', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-25', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Boq1RIAR/view'},
+  {id:'13770272', client:'lifemd', source:'sf', subject:'Elation Not Working – Connectivity / Loading Issues', type:'Break-Fix', owner:'Latrina Nickens', status:'pending', priority:1, opened:'2026-08-25', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Boq1RIAR/view'},
   {id:'13763571', client:'lifemd', source:'sf', subject:'Problems with New Hires – Provider eRx Not Working', type:'Break-Fix', owner:'Lubna Ismail', status:'pending', priority:1, opened:'2026-08-04', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019TCRZIA4/view'},
   {id:'13768814', client:'lifemd', source:'sf', subject:'EPCS IDP – IdenTrust Required – Alberto Perez Acosta', type:'Onboarding', owner:'Michaela Iglesias', status:'resolved', priority:2, opened:'2026-08-19', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BJfqHIAT/view'},
   {id:'13764602', client:'lifemd', source:'sf', subject:'Provider eRx and EPCS Not Active – Cecelia Facey FNP', type:'Onboarding', owner:'Cody Quaile', status:'resolved', priority:1, opened:'2026-08-07', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui000019qjGKIAY/view'},
@@ -550,7 +550,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-09-04');
+const TODAY = new Date('2026-09-09');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
