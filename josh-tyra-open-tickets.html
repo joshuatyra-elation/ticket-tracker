@@ -176,7 +176,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 9, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 10, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -434,7 +434,7 @@ const ALL_TICKETS = [
   // ── FORM · Linear ──────────────────────────────────────────────
   {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'blocked', priority:1, opened:'2026-08-21', url:'https://linear.app/elationhealth/issue/DATA-1492/metriport-api-integration-bulk-creating-duplicate-problem-list-entries'},
   {id:'BST-2552', client:'form', source:'linear', subject:'Users Unable to Access Support Case Portal via SSO', type:'Portal', owner:'Andrew Talbot', status:'done', priority:3, opened:'2026-07-30', url:'https://linear.app/elationhealth/issue/BST-2552/users-unable-to-access-support-case-portal-via-sso-error'},
-  {id:'TE-225', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'blocked', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/TE-225/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
+  {id:'ORD-757', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'blocked', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/ORD-757/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
   {id:'TE-473', client:'form', source:'linear', subject:'Multi-State ePrescribing Transmits Wrong DEA Number', type:'Break-Fix', owner:'Darren Tan', status:'done', priority:2, opened:'2026-07-20', url:'https://linear.app/elationhealth/issue/TE-473/multi-state-eprescribing-transmits-wrong-dea-number'},
   {id:'EHRFBK-966', client:'form', source:'linear', subject:'Bulk Export/Report of Fax Inbox Filing Activity by User and Day', type:'Reporting/Data', owner:'Unassigned', status:'open', priority:0, opened:'2026-08-29', url:'https://linear.app/elationhealth/issue/EHRFBK-966/bulk-exportreport-of-fax-inbox-filing-activity-by-user-and-day'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
@@ -550,7 +550,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-09-09');
+const TODAY = new Date('2026-09-10');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
