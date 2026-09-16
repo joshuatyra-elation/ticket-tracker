@@ -176,7 +176,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 15, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Sep 16, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -208,14 +208,14 @@
   <!-- TOP STATS -->
   <div class="rollup-grid">
     <div class="stat-card accent-gray">
-      <div class="stat-value" style="color:#1a1d2e">16</div>
+      <div class="stat-value" style="color:#1a1d2e">18</div>
       <div class="stat-label">Open Tickets</div>
       <div class="stat-sub">Across all 4 accounts</div>
     </div>
     <div class="stat-card accent-purple">
-      <div class="stat-value" style="color:#6255d4">3</div>
+      <div class="stat-value" style="color:#6255d4">4</div>
       <div class="stat-label">Allara</div>
-      <div class="stat-sub">1 SF · 2 Linear</div>
+      <div class="stat-sub">1 SF · 3 Linear</div>
     </div>
     <div class="stat-card accent-blue">
       <div class="stat-value" style="color:#1a7fe0">3</div>
@@ -223,9 +223,9 @@
       <div class="stat-sub">3 SF · 0 Linear</div>
     </div>
     <div class="stat-card accent-teal">
-      <div class="stat-value" style="color:#0faa84">7</div>
+      <div class="stat-value" style="color:#0faa84">8</div>
       <div class="stat-label">Form Health</div>
-      <div class="stat-sub">4 SF · 3 Linear</div>
+      <div class="stat-sub">4 SF · 4 Linear</div>
     </div>
     <div class="stat-card accent-red">
       <div class="stat-value" style="color:#e8512a">3</div>
@@ -240,9 +240,9 @@
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-allara"></span>Allara</div>
       <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">1</span></div>
-      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">2</span></div>
-      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">2</span></div>
-      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">2</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">3</span></div>
+      <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">3</span></div>
+      <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">3</span></div>
       <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">API/Webhook gaps</span></div>
     </div>
     <div class="client-card">
@@ -256,7 +256,7 @@
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-form"></span>Form Health</div>
       <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">4</span></div>
-      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">3</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">4</span></div>
       <div class="client-card-row"><span class="lbl">Open Violations</span><span class="val" style="color:#b83010">0</span></div>
       <div class="client-card-row"><span class="lbl">Pending Elation</span><span class="val" style="color:#8a6200">2</span></div>
       <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">Metriport duplicate problem list</span></div>
@@ -420,6 +420,7 @@ const ALL_TICKETS = [
   // ── ALLARA · Linear ──────────────────────────────────────────────
   {id:'ENTFBK-100', client:'allara', source:'linear', subject:'PON (Provider Order Number) Not Exposed in Prescription Webhook Payload', type:'API/Webhook', owner:'Unassigned', status:'new', priority:0, opened:'2026-06-18', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-100/pon-provider-order-number-not-exposed-in-elation-prescription-webhook'},
   {id:'ENTFBK-163', client:'allara', source:'linear', subject:'No Self-Service Chart UI Customization & Structured Data Auto-Sync Gaps', type:'Feature Request', owner:'Unassigned', status:'new', priority:0, opened:'2026-07-31', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-163/no-self-service-chart-ui-customization-iframesidebar-and-structured'},
+  {id:'ENTFBK-141', client:'allara', source:'linear', subject:'Elation API Supports Printable Lab Orders but Not Printable Imaging Orders or Referral Letters', type:'API/Integration', owner:'Unassigned', status:'new', priority:0, opened:'2026-07-09', stale:true, url:'https://linear.app/elationhealth/issue/ENTFBK-141/elation-api-supports-printable-lab-orders-but-not-printable-imaging'},
   {id:'LGLCMP-132', client:'allara', source:'linear', subject:'Invoice Reconciliation Guidance', type:'Legal/Compliance', owner:'Unassigned', status:'done', priority:0, opened:'2026-08-07', url:'https://linear.app/elationhealth/issue/LGLCMP-132/legal-to-provide-guidance-allara-invoice-reconciliation'},
   // ── FSH · SF ──────────────────────────────────────────────────
   {id:'13769884', client:'fsh', source:'sf', subject:'Invoice #229491 – BILL.com Payment ($33,672)', type:'Finance/AR', owner:'Lily Bizuneh', status:'resolved', priority:3, opened:'2026-08-24', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001BjnaRIAR/view'},
@@ -438,6 +439,7 @@ const ALL_TICKETS = [
   {id:'DATA-1492', client:'form', source:'linear', subject:'Metriport API Integration Bulk-Creating Duplicate Problem List Entries', type:'API/Integration', owner:'Unassigned', status:'blocked', priority:1, opened:'2026-08-21', url:'https://linear.app/elationhealth/issue/DATA-1492/metriport-api-integration-bulk-creating-duplicate-problem-list-entries'},
   {id:'ORD-757', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'blocked', priority:2, opened:'2026-07-28', url:'https://linear.app/elationhealth/issue/ORD-757/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
   {id:'SVC-425', client:'form', source:'linear', subject:'Request for Recurring Fax Inbox Movement Report', type:'Reporting/Data', owner:'Unassigned', status:'new', priority:0, opened:'2026-09-02', url:'https://linear.app/elationhealth/issue/SVC-425/request-for-recurring-fax-inbox-movement-report-for-form-health'},
+  {id:'EHRFBK-966', client:'form', source:'linear', subject:'Bulk Export/Report of Fax Inbox Filing Activity by User and Day', type:'Reporting/Data', owner:'Unassigned', status:'new', priority:0, opened:'2026-08-29', stale:true, url:'https://linear.app/elationhealth/issue/EHRFBK-966/bulk-exportreport-of-fax-inbox-filing-activity-by-user-and-day'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
   {id:'13765359', client:'lifemd', source:'sf', subject:'Support Portal Login Issue – Jason Youn', type:'Portal Access', owner:'Lubna Ismail', status:'resolved', priority:3, opened:'2026-08-10', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001AFj8DIAT/view'},
   {id:'13770272', client:'lifemd', source:'sf', subject:'Elation Not Working – Connectivity / Loading Issues', type:'Break-Fix', owner:'Latrina Nickens', status:'resolved', priority:1, opened:'2026-08-25', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Boq1RIAR/view'},
@@ -554,7 +556,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-09-15');
+const TODAY = new Date('2026-09-16');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
