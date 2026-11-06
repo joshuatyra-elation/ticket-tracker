@@ -188,7 +188,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Nov 2, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Nov 6, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -220,7 +220,7 @@
   <!-- TOP STATS -->
   <div class="rollup-grid">
     <div class="stat-card accent-gray">
-      <div class="stat-value" style="color:#1a1d2e">21</div>
+      <div class="stat-value" style="color:#1a1d2e">22</div>
       <div class="stat-label">Open Tickets</div>
       <div class="stat-sub">Across all 4 accounts</div>
     </div>
@@ -235,9 +235,9 @@
       <div class="stat-sub">1 SF · 1 Linear</div>
     </div>
     <div class="stat-card accent-teal">
-      <div class="stat-value" style="color:#0faa84">6</div>
+      <div class="stat-value" style="color:#0faa84">7</div>
       <div class="stat-label">Form Health</div>
-      <div class="stat-sub">2 SF · 4 Linear</div>
+      <div class="stat-sub">2 SF · 5 Linear</div>
     </div>
     <div class="stat-card accent-red">
       <div class="stat-value" style="color:#e8512a">6</div>
@@ -268,10 +268,10 @@
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-form"></span>Form Health</div>
       <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">2</span></div>
-      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">4</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">5</span></div>
       <div class="client-card-row"><span class="lbl">Open Violations</span><span class="val" style="color:#b83010">1</span></div>
       <div class="client-card-row"><span class="lbl">Pending Elation</span><span class="val" style="color:#8a6200">0</span></div>
-      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">Dr. Hangan's notes-not-signed case across many patients (13789979, escalated, open violation) now pending customer with Pete Rivera (duplicate 13789981 closed); $173.59 credit correction 13780319 pending customer (stale); DATA-1492 (Metriport) and ORD-757 still blocked; 4 stale Linear (DATA-1492, ORD-757, SVC-425, EHRFBK-237) plus SF 13780319</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">Dr. Hangan's notes-not-signed case across many patients (13789979, escalated, open violation) now pending customer with Pete Rivera (duplicate 13789981 closed); $173.59 credit correction 13780319 pending customer (stale); new CE-1617 (billing tab not loading in patient chart, SWAT triage, opened 11/5, SF 13794116 not yet in tracker); DATA-1492 (Metriport) and ORD-757 still blocked; 4 stale Linear (DATA-1492, ORD-757, SVC-425, EHRFBK-237) plus SF 13780319</span></div>
     </div>
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-lifemd"></span>LifeMD</div>
@@ -279,7 +279,7 @@
       <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">3</span></div>
       <div class="client-card-row"><span class="lbl">eRx Blockers</span><span class="val" style="color:#b83010">1</span></div>
       <div class="client-card-row"><span class="lbl">Platform Issues</span><span class="val" style="color:#b83010">1</span></div>
-      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">EPCS enrollment blocked on Experian code (13774885, last update 10/12, stale); Note Assist overwriting custom blocks (13785661, escalated, last activity 10/19, now stale), Hosted DB reader request (13786150, escalated, 10-day resolution warning); Note Beta Exam Reason pre-populated issue (13789906) resolved 10/28; BST-3484 (blocked) investigating Life MD renewal FT and Note Assist sync discrepancies; insurance API extension FOPE-686 stale; "State" filter on chart reports (Linear EHRFBK-608 still in triage, stale)</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">EPCS enrollment blocked on Experian code (13774885, last update 10/12, stale); Note Assist overwriting custom blocks (13785661, escalated, last activity 10/19, now stale), Hosted DB reader request (13786150, escalated, 10-day resolution warning); Note Beta Exam Reason pre-populated issue (13789906) resolved 10/28; BST-3484 (now To Do, updated 11/3) investigating Life MD renewal FT and Note Assist sync discrepancies; insurance API extension FOPE-686 stale; "State" filter on chart reports (Linear EHRFBK-608 still in triage, stale)</span></div>
     </div>
   </div>
 
@@ -508,6 +508,7 @@ const ALL_TICKETS = [
   {id:'ORD-757', client:'form', source:'linear', subject:'Form Health: Disable Pharmacy e-Comms + Block Prescribing Access for Select Providers', type:'Clinical', owner:'Fifi Kara', status:'blocked', priority:2, opened:'2026-07-28', stale:true, url:'https://linear.app/elationhealth/issue/ORD-757/form-health-disable-pharmacy-e-comms-block-prescribing-access-for'},
   {id:'SVC-425', client:'form', source:'linear', subject:'Request for Recurring Fax Inbox Movement Report', type:'Reporting/Data', owner:'Unassigned', status:'in-progress', priority:0, opened:'2026-09-02', stale:true, url:'https://linear.app/elationhealth/issue/SVC-425/request-for-recurring-fax-inbox-movement-report-for-form-health'},
   {id:'EHRFBK-237', client:'form', source:'linear', subject:'Note Content Recovery After Accidental Amendment', type:'Break-Fix', owner:'Unassigned', status:'new', priority:0, opened:'2026-06-11', stale:true, url:'https://linear.app/elationhealth/issue/EHRFBK-237/note-content-recovery-after-accidental-amendment'},
+  {id:'CE-1617', client:'form', source:'linear', subject:'Billing tab in patient chart not loading (Form Health, SWAT)', type:'Break-Fix', owner:'Unassigned', status:'new', priority:2, opened:'2026-11-05', url:'https://linear.app/elationhealth/issue/CE-1617/billing-tab-in-patient-chart-not-loading'},
   {id:'ACES-1920', client:'form', source:'linear', subject:'Duplicate diagnoses appearing on problem list without manual entry', type:'Break-Fix', owner:'Unassigned', status:'resolved', priority:2, opened:'2026-10-11', url:'https://linear.app/elationhealth/issue/ACES-1920/duplicate-diagnoses-appearing-on-problem-list-without-manual-entry'},
   {id:'ORD-1354', client:'form', source:'linear', subject:'Medi-Span-Listed Insulin Pump Supplies (twiist, Omnipod 5) Not Returned in Medication Search for Form Health', type:'Break-Fix', owner:'Kin Lee', status:'done', priority:3, opened:'2026-10-19', url:'https://linear.app/elationhealth/issue/ORD-1354/medi-span-listed-insulin-pump-supplies-twiist-omnipod-5-not-returned'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
@@ -544,7 +545,7 @@ const ALL_TICKETS = [
   // ── LIFEMD · Linear ──────────────────────────────────────────────
   {id:'FOPE-686', client:'lifemd', source:'linear', subject:'Insurance API Deprecation Extension – LifeMD Go-Live Pending (Practice 337577483108356)', type:'API/Integration', owner:'Eric Credeur', status:'todo', priority:3, opened:'2026-03-25', stale:true, url:'https://linear.app/elationhealth/issue/FOPE-686/practices-with-approved-extension-for-insurance-api'},
   {id:'EHRFBK-608', client:'lifemd', source:'linear', subject:'Chart Reports Missing "State" Filter for Provider Audit Workflows', type:'Reporting/Data', owner:'Unassigned', status:'new', priority:0, opened:'2026-08-07', stale:true, url:'https://linear.app/elationhealth/issue/EHRFBK-608/chart-reports-system-has-no-state-filter-blocking-provider-audit'},
-  {id:'BST-3484', client:'lifemd', source:'linear', subject:'Investigate Life MD renewal FT and Note Assist sync discrepancies', type:'Finance/Billing', owner:'Unassigned', status:'blocked', priority:0, opened:'2026-10-27', url:'https://linear.app/elationhealth/issue/BST-3484/investigate-life-md-renewal-ft-and-note-assist-sync-discrepancies'},
+  {id:'BST-3484', client:'lifemd', source:'linear', subject:'Investigate Life MD renewal FT and Note Assist sync discrepancies', type:'Finance/Billing', owner:'Unassigned', status:'todo', priority:0, opened:'2026-10-27', url:'https://linear.app/elationhealth/issue/BST-3484/investigate-life-md-renewal-ft-and-note-assist-sync-discrepancies'},
   {id:'BST-3246', client:'lifemd', source:'linear', subject:'Remove duplicate LifeMD account to prevent misassigned cases', type:'Data Quality', owner:'Unassigned', status:'done', priority:3, opened:'2026-10-09', url:'https://linear.app/elationhealth/issue/BST-3246/remove-duplicate-lifemd-account-to-prevent-misassigned-cases'},
 ];
 
@@ -652,7 +653,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-11-02');
+const TODAY = new Date('2026-11-06');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
