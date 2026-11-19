@@ -188,7 +188,7 @@
     <div class="header-icon">🎫</div>
     <div>
       <div class="header-title">Josh Tyra — Account Open Tickets</div>
-      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Nov 18, 2026</div>
+      <div class="header-sub">Salesforce Cases + Linear Issues &nbsp;·&nbsp; All Clients &nbsp;·&nbsp; Nov 19, 2026</div>
     </div>
   </div>
   <div class="header-right">
@@ -225,9 +225,9 @@
       <div class="stat-sub">Across all 4 accounts</div>
     </div>
     <div class="stat-card accent-purple">
-      <div class="stat-value" style="color:#6255d4">4</div>
+      <div class="stat-value" style="color:#6255d4">5</div>
       <div class="stat-label">Allara</div>
-      <div class="stat-sub">2 SF · 2 Linear</div>
+      <div class="stat-sub">3 SF · 2 Linear</div>
     </div>
     <div class="stat-card accent-blue">
       <div class="stat-value" style="color:#1a7fe0">2</div>
@@ -240,9 +240,9 @@
       <div class="stat-sub">3 SF · 5 Linear</div>
     </div>
     <div class="stat-card accent-red">
-      <div class="stat-value" style="color:#e8512a">8</div>
+      <div class="stat-value" style="color:#e8512a">7</div>
       <div class="stat-label">LifeMD</div>
-      <div class="stat-sub">3 SF · 5 Linear</div>
+      <div class="stat-sub">4 SF · 3 Linear</div>
     </div>
   </div>
 
@@ -251,11 +251,11 @@
   <div class="client-cards">
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-allara"></span>Allara</div>
-      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">2</span></div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">3</span></div>
       <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">2</span></div>
       <div class="client-card-row"><span class="lbl">Stale Cases</span><span class="val" style="color:#b83010">0</span></div>
       <div class="client-card-row"><span class="lbl">Unassigned Linear</span><span class="val" style="color:#b83010">2</span></div>
-      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">Lab vendor dropdown blank – Labcorp/Quest missing (13797262, opened 11/16, Open); Billing Home 414 error (13797638, opened 11/17, Pending); enterprise feedback backlog – ordering governance EBFBK-240, chart customization ENTFBK-163 (both stale, unassigned)</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">Collections (13798322, new 11/19); Lab vendor dropdown blank (13797262, opened 11/16, Open); Billing Home 414 error (13797638, opened 11/17, Pending); enterprise feedback backlog – ordering governance EBFBK-240, chart customization ENTFBK-163 (both stale, unassigned)</span></div>
     </div>
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-fsh"></span>First Stop Health</div>
@@ -275,11 +275,11 @@
     </div>
     <div class="client-card">
       <div class="client-card-name"><span class="client-dot dot-lifemd"></span>LifeMD</div>
-      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">3</span></div>
-      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">5</span></div>
-      <div class="client-card-row"><span class="lbl">eRx Blockers</span><span class="val" style="color:#b83010">1</span></div>
+      <div class="client-card-row"><span class="lbl">SF Open</span><span class="val" style="color:#1460b0">4</span></div>
+      <div class="client-card-row"><span class="lbl">Linear Open</span><span class="val" style="color:#6255d4">3</span></div>
+      <div class="client-card-row"><span class="lbl">eRx Blockers</span><span class="val" style="color:#b83010">2</span></div>
       <div class="client-card-row"><span class="lbl">Platform Issues</span><span class="val" style="color:#b83010">0</span></div>
-      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">EPCS issue: Dr. Daphne Hemmings (13797047, Open 11/16); Hosted DB reader request (13786150, stale 36d, Pending); SOC 2 report (13782087, stale 49d, support backlog); SVC-697 (sandbox credentials, 11/10, Todo); BST-3484 (renewal FT sync, in progress 10/27); EHRFBK-1509 (Note Assist overwrites, 11/11, New); FOPE-686 & EHRFBK-608 (both stale)</span></div>
+      <div class="client-card-row"><span class="lbl">Top Issue</span><span class="val">CVS pharmacy instructions not transmitted (13797989, Open 11/18); Wrong NDCs sent (13798144, Open 11/18); Hosted DB reader request (13786150, stale 37d, Pending); SOC 2 report (13782087, stale 50d, support backlog); EHRFBK-1509 (Note Assist overwrites, 11/11, New); FOPE-686 & EHRFBK-608 (both stale); BST-3484 & SVC-697 (Done)</span></div>
     </div>
   </div>
 
@@ -426,6 +426,7 @@
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const ALL_TICKETS = [
   // ── ALLARA · SF ──────────────────────────────────────────────────
+  {id:'13798322', client:'allara', source:'sf', subject:'Collections', type:'Finance/Billing', owner:'CJay DeLuna-EXT', status:'pending', priority:2, opened:'2026-11-19', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001M46BMIAZ/view'},
   {id:'13797262', client:'allara', source:'sf', subject:'Lab vendor dropdown blank — Labcorp and Quest not appearing', type:'Break-Fix', owner:'Lesli Balmir', status:'open', priority:2, opened:'2026-11-16', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Ljp6dIAB/view'},
   {id:'13797638', client:'allara', source:'sf', subject:'Billing Home 414 error when using Select all in Providers filter', type:'Break-Fix', owner:'Onyeka Asumah', status:'pending', priority:2, opened:'2026-11-17', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Lq9VgIAJ/view'},
   // ── ALLARA · Linear ──────────────────────────────────────────────
@@ -447,13 +448,14 @@ const ALL_TICKETS = [
   {id:'BST-3685', client:'form', source:'linear', subject:'Cancel and Replace Form Health Renewal Contract', type:'Finance/Billing', owner:'Ana Flores', status:'blocked', priority:3, opened:'2026-11-09', url:'https://linear.app/elationhealth/issue/BST-3685/cancel-and-replace-form-healths-renewal-contract'},
   // ── LIFEMD · SF ──────────────────────────────────────────────────
   {id:'13782087', client:'lifemd', source:'sf', subject:'Request for Most Recent SOC 2 Type 2 Report', type:'How-To', owner:'TEMP - Support Backlog', status:'new', priority:2, opened:'2026-09-30', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Fe39KIAR/view'},
-  {id:'13797047', client:'lifemd', source:'sf', subject:'Provider EPCS Issue - Daphne Hemmings', type:'Op Support', owner:'Pete Rivera', status:'open', priority:2, opened:'2026-11-16', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001LgYGqIAN/view'},
+  {id:'13797989', client:'lifemd', source:'sf', subject:'Instructions to Pharmacy Field Not Transmitted to CVS Pharmacy', type:'Break-Fix', owner:'Lesli Balmir', status:'open', priority:2, opened:'2026-11-18', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001LwdCZIAZ/view'},
+  {id:'13798144', client:'lifemd', source:'sf', subject:'Wrong NDCs Being Sent', type:'Break-Fix', owner:'Cody Quaile', status:'open', priority:2, opened:'2026-11-18', url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001Lzl5TIAR/view'},
   {id:'13786150', client:'lifemd', source:'sf', subject:'Hosted Database Reader Account Setup Request', type:'API/Integration', owner:'Ricky Ahn', status:'pending', priority:2, opened:'2026-10-13', stale:true, url:'https://elation.lightning.force.com/lightning/r/Case/500Ui00001HkbvCIAR/view'},
   // ── LIFEMD · Linear ──────────────────────────────────────────────
   {id:'FOPE-686', client:'lifemd', source:'linear', subject:'Insurance API Deprecation Extension – LifeMD Go-Live Pending', type:'API/Integration', owner:'Eric Credeur', status:'todo', priority:3, opened:'2026-03-25', stale:true, url:'https://linear.app/elationhealth/issue/FOPE-686/practices-with-approved-extension-for-insurance-api'},
   {id:'EHRFBK-608', client:'lifemd', source:'linear', subject:'Chart Reports Missing "State" Filter for Provider Audit Workflows', type:'Reporting/Data', owner:'', status:'new', priority:0, opened:'2026-08-07', stale:true, url:'https://linear.app/elationhealth/issue/EHRFBK-608/chart-reports-system-has-no-state-filter-blocking-provider-audit'},
-  {id:'BST-3484', client:'lifemd', source:'linear', subject:'Investigate Life MD Renewal FT and Note Assist Sync Discrepancies', type:'Finance/Billing', owner:'Choongil Fleischman', status:'in-progress', priority:0, opened:'2026-10-27', url:'https://linear.app/elationhealth/issue/BST-3484/investigate-life-md-renewal-ft-and-note-assist-sync-discrepancies'},
-  {id:'SVC-697', client:'lifemd', source:'linear', subject:'Request Sandbox Credentials for Umesh Sripad at Life MD', type:'API/Integration', owner:'Kyle Hall', status:'todo', priority:2, opened:'2026-11-10', url:'https://linear.app/elationhealth/issue/SVC-697/request-sandbox-credentials-for-umesh-sripad-at-life-md'},
+  {id:'BST-3484', client:'lifemd', source:'linear', subject:'Investigate Life MD Renewal FT and Note Assist Sync Discrepancies', type:'Finance/Billing', owner:'Choongil Fleischman', status:'done', priority:0, opened:'2026-10-27', url:'https://linear.app/elationhealth/issue/BST-3484/investigate-life-md-renewal-ft-and-note-assist-sync-discrepancies'},
+  {id:'SVC-697', client:'lifemd', source:'linear', subject:'Request Sandbox Credentials for Umesh Sripad at Life MD', type:'API/Integration', owner:'Kyle Hall', status:'done', priority:2, opened:'2026-11-10', url:'https://linear.app/elationhealth/issue/SVC-697/request-sandbox-credentials-for-umesh-sripad-at-life-md'},
   {id:'EHRFBK-1509', client:'lifemd', source:'linear', subject:'Note Assist Overwrites Template Text in Custom Block Fields; No Supported Way to Lock It', type:'Feature Request', owner:'', status:'new', priority:3, opened:'2026-11-11', url:'https://linear.app/elationhealth/issue/EHRFBK-1509/note-assist-overwrites-template-text-in-custom-block-fields-no'},
 ];
 
@@ -561,7 +563,7 @@ function srcChip(s) {
     : '<span class="src src-lin">Linear</span>';
 }
 
-const TODAY = new Date('2026-11-17');
+const TODAY = new Date('2026-11-19');
 function caseAge(opened) {
   if(!opened) return 0;
   return Math.round((TODAY - new Date(opened)) / 86400000);
